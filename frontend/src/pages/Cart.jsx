@@ -4,49 +4,107 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { useToast } from '../hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
+import { cartAPI, getSessionId, productsAPI } from '../api/client';
 
 const Cart = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
+    fetchCart();
   }, []);
 
-  const updateCart = (newCart) => {
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-  };
+  const fetchCart = async () => {
+    try {
+      const sessionId = getSessionId();
+      const response = await cartAPI.getCart(sessionId);
+      const cartData = response.data;
+      setCart(cartData);
 
-  const handleRemoveItem = (productId) => {
-    const newCart = cart.filter((item) => item.id !== productId);
-    updateCart(newCart);
-    toast({
-      title: "Item removed",
-      description: "The item has been removed from your cart.",
-    });
-  };
-
-  const handleUpdateQuantity = (productId, change) => {
-    const newCart = cart.map((item) => {
-      if (item.id === productId) {
-        const newQuantity = item.quantity + change;
-        if (newQuantity > 0) {
-          return { ...item, quantity: newQuantity };
-        }
+      // Fetch product details for each cart item
+      if (cartData.items && cartData.items.length > 0) {
+        const productsResponse = await productsAPI.getAll();
+        const allProducts = productsResponse.data;
+        
+        const itemsWithDetails = cartData.items.map(item => {
+          const product = allProducts.find(p => p.id === item.product_id);
+          return {
+            ...product,
+            quantity: item.quantity,
+            price_at_time: item.price_at_time
+          };
+        });
+        setCartItems(itemsWithDetails);
       }
-      return item;
-    }).filter(item => item.quantity > 0);
-    
-    updateCart(newCart);
+    } catch (error) {
+      console.error('Error fetching cart:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRemoveItem = async (productId) => {
+    try {
+      const sessionId = getSessionId();
+      await cartAPI.removeItem(sessionId, productId);
+      
+      // Update local state
+      setCartItems(prev => prev.filter(item => item.id !== productId));
+      
+      // Trigger cart count update
+      window.dispatchEvent(new Event('storage'));
+      
+      toast({
+        title: "Item removed",
+        description: "The item has been removed from your cart.",
+      });
+    } catch (error) {
+      console.error('Error removing item:', error);
+      toast({
+        title: "Error",
+        description: "Failed to remove item from cart.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleUpdateQuantity = async (productId, newQuantity) => {
+    try {
+      const sessionId = getSessionId();
+      
+      if (newQuantity <= 0) {
+        await handleRemoveItem(productId);
+        return;
+      }
+      
+      await cartAPI.updateItem(sessionId, productId, newQuantity);
+      
+      // Update local state
+      setCartItems(prev => prev.map(item => 
+        item.id === productId ? { ...item, quantity: newQuantity } : item
+      ));
+      
+      // Trigger cart count update
+      window.dispatchEvent(new Event('storage'));
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+      toast({
+        title: "Error",
+        description: "Failed to update quantity.",
+        variant: "destructive",
+      });
+    }
   };
 
   const calculateSubtotal = () => {
-    return cart.reduce((total, item) => total + (item.currentPrice * item.quantity), 0);
+    return cartItems.reduce((total, item) => total + (item.current_price * item.quantity), 0);
+  };
+
+  const calculateOriginalTotal = () => {
+    return cartItems.reduce((total, item) => total + (item.original_price * item.quantity), 0);
   };
 
   const handleCheckout = () => {
@@ -57,7 +115,15 @@ const Cart = () => {
     // In a real app, this would navigate to a checkout page
   };
 
-  if (cart.length === 0) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-16 flex justify-center items-center">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+      </div>
+    );
+  }
+
+  if (cartItems.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
