@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from './ui/card';
 import { Button } from './ui/button';
 import { ShoppingCart } from 'lucide-react';
 
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductCard = memo(({ product, onAddToCart }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -25,6 +25,7 @@ const ProductCard = ({ product, onAddToCart }) => {
         <img
           src={product.image}
           alt={product.title}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
@@ -52,6 +53,8 @@ const ProductCard = ({ product, onAddToCart }) => {
       </CardFooter>
     </Card>
   );
-};
+});
+
+ProductCard.displayName = 'ProductCard';
 
 export default ProductCard;
