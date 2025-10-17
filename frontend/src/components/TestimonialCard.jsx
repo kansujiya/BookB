@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
-const TestimonialCard = ({ testimonial }) => {
+const TestimonialCard = memo(({ testimonial }) => {
   return (
     <Card className="h-full hover:shadow-lg transition-shadow duration-300 bg-white">
       <CardContent className="p-6">
@@ -11,7 +11,11 @@ const TestimonialCard = ({ testimonial }) => {
         </p>
         <div className="flex items-center space-x-3">
           <Avatar className="h-12 w-12">
-            <AvatarImage src={testimonial.image} alt={testimonial.name} />
+            <AvatarImage 
+              src={testimonial.image} 
+              alt={testimonial.name}
+              loading="lazy"
+            />
             <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div>
@@ -22,6 +26,8 @@ const TestimonialCard = ({ testimonial }) => {
       </CardContent>
     </Card>
   );
-};
+});
+
+TestimonialCard.displayName = 'TestimonialCard';
 
 export default TestimonialCard;
