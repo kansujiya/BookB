@@ -132,6 +132,7 @@ const Home = () => {
               <img
                 src="https://images.unsplash.com/photo-1661347998423-b15d37d6f61e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
                 alt="Samsung"
+                loading="lazy"
                 className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
               />
             </div>
@@ -139,6 +140,7 @@ const Home = () => {
               <img
                 src="https://images.unsplash.com/photo-1661347998996-dcf102498c63?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
                 alt="TikTok"
+                loading="lazy"
                 className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
               />
             </div>
@@ -146,6 +148,7 @@ const Home = () => {
               <img
                 src="https://images.unsplash.com/photo-1760386129108-d17b9cdfc4fa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHw0fHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
                 alt="Audible"
+                loading="lazy"
                 className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
               />
             </div>
@@ -153,6 +156,7 @@ const Home = () => {
               <img
                 src="https://images.pexels.com/photos/7202944/pexels-photo-7202944.jpeg"
                 alt="Logitech"
+                loading="lazy"
                 className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
               />
             </div>
@@ -160,6 +164,7 @@ const Home = () => {
               <img
                 src="https://images.pexels.com/photos/2449452/pexels-photo-2449452.jpeg"
                 alt="Tesla"
+                loading="lazy"
                 className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
               />
             </div>
