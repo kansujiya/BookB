@@ -4,75 +4,183 @@ import { X, ShoppingBag } from 'lucide-react';
 const PurchaseNotification = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentPurchase, setCurrentPurchase] = useState(null);
+  const [usedIndices, setUsedIndices] = useState([]);
 
-  // Mock purchase data
+  // Expanded mock purchase data with diverse names and locations
   const recentPurchases = [
     {
-      customerName: 'Rajesh from Mumbai',
+      customerName: 'Rajesh K.',
       productName: 'Software System Design',
       timeAgo: '2 minutes ago',
       location: 'Mumbai, India'
     },
     {
-      customerName: 'Priya from Bangalore',
+      customerName: 'Priya S.',
       productName: 'Software Architecture Patterns',
       timeAgo: '5 minutes ago',
       location: 'Bangalore, India'
     },
     {
-      customerName: 'Amit from Delhi',
+      customerName: 'Amit P.',
       productName: 'Foundations of Software Design Volume 2',
       timeAgo: '8 minutes ago',
       location: 'Delhi, India'
     },
     {
-      customerName: 'Sneha from Pune',
+      customerName: 'Sneha M.',
       productName: 'Software System Design',
       timeAgo: '12 minutes ago',
       location: 'Pune, India'
     },
     {
-      customerName: 'Vikram from Hyderabad',
+      customerName: 'Vikram R.',
       productName: 'Software Architecture Patterns',
       timeAgo: '15 minutes ago',
       location: 'Hyderabad, India'
     },
     {
-      customerName: 'Anita from Chennai',
+      customerName: 'Anita D.',
       productName: 'Foundations of Software Design Volume 2',
       timeAgo: '18 minutes ago',
       location: 'Chennai, India'
+    },
+    {
+      customerName: 'Karthik V.',
+      productName: 'Software System Design',
+      timeAgo: '22 minutes ago',
+      location: 'Coimbatore, India'
+    },
+    {
+      customerName: 'Divya N.',
+      productName: 'Software Architecture Patterns',
+      timeAgo: '25 minutes ago',
+      location: 'Ahmedabad, India'
+    },
+    {
+      customerName: 'Rohan B.',
+      productName: 'Software System Design',
+      timeAgo: '30 minutes ago',
+      location: 'Kolkata, India'
+    },
+    {
+      customerName: 'Kavya L.',
+      productName: 'Foundations of Software Design Volume 2',
+      timeAgo: '35 minutes ago',
+      location: 'Jaipur, India'
+    },
+    {
+      customerName: 'Aditya G.',
+      productName: 'Software Architecture Patterns',
+      timeAgo: '40 minutes ago',
+      location: 'Noida, India'
+    },
+    {
+      customerName: 'Meera J.',
+      productName: 'Software System Design',
+      timeAgo: '45 minutes ago',
+      location: 'Lucknow, India'
+    },
+    {
+      customerName: 'Sanjay T.',
+      productName: 'Foundations of Software Design Volume 2',
+      timeAgo: '48 minutes ago',
+      location: 'Surat, India'
+    },
+    {
+      customerName: 'Pooja W.',
+      productName: 'Software Architecture Patterns',
+      timeAgo: '52 minutes ago',
+      location: 'Indore, India'
+    },
+    {
+      customerName: 'Arjun M.',
+      productName: 'Software System Design',
+      timeAgo: '1 hour ago',
+      location: 'Chandigarh, India'
+    },
+    {
+      customerName: 'Ritika S.',
+      productName: 'Software Architecture Patterns',
+      timeAgo: '1 hour ago',
+      location: 'Nagpur, India'
+    },
+    {
+      customerName: 'Nikhil A.',
+      productName: 'Foundations of Software Design Volume 2',
+      timeAgo: '1 hour ago',
+      location: 'Bhopal, India'
+    },
+    {
+      customerName: 'Ishita R.',
+      productName: 'Software System Design',
+      timeAgo: '1 hour ago',
+      location: 'Vadodara, India'
+    },
+    {
+      customerName: 'Rahul K.',
+      productName: 'Software Architecture Patterns',
+      timeAgo: '2 hours ago',
+      location: 'Gurgaon, India'
+    },
+    {
+      customerName: 'Anjali P.',
+      productName: 'Software System Design',
+      timeAgo: '2 hours ago',
+      location: 'Kochi, India'
     }
   ];
 
   useEffect(() => {
+    let timeoutId;
+
+    const getUniquePurchase = () => {
+      let availableIndices = [];
+      for (let i = 0; i < recentPurchases.length; i++) {
+        if (!usedIndices.includes(i)) {
+          availableIndices.push(i);
+        }
+      }
+
+      // Reset if all purchases have been shown
+      if (availableIndices.length === 0) {
+        setUsedIndices([]);
+        availableIndices = recentPurchases.map((_, i) => i);
+      }
+
+      // Pick a random index from available ones
+      const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+      setUsedIndices(prev => [...prev, randomIndex]);
+      return recentPurchases[randomIndex];
+    };
+
     const showNotification = () => {
-      // Pick a random purchase
-      const randomPurchase = recentPurchases[Math.floor(Math.random() * recentPurchases.length)];
+      // Get a unique purchase
+      const randomPurchase = getUniquePurchase();
       setCurrentPurchase(randomPurchase);
       setIsVisible(true);
 
-      // Hide after 4 seconds
+      // Hide after 5 seconds
       setTimeout(() => {
         setIsVisible(false);
-      }, 4000);
+      }, 5000);
+
+      // Schedule next notification with random time between 30 seconds to 3 minutes
+      const randomDelay = Math.random() * 150000 + 30000; // 30000ms to 180000ms (30s to 3min)
+      timeoutId = setTimeout(() => {
+        showNotification();
+      }, randomDelay);
     };
 
-    // Show first notification after 5 seconds
+    // Show first notification after 8 seconds
     const initialTimeout = setTimeout(() => {
       showNotification();
-    }, 5000);
-
-    // Show notification every 15-25 seconds
-    const interval = setInterval(() => {
-      showNotification();
-    }, Math.random() * 10000 + 15000); // Random between 15-25 seconds
+    }, 8000);
 
     return () => {
       clearTimeout(initialTimeout);
-      clearInterval(interval);
+      if (timeoutId) clearTimeout(timeoutId);
     };
-  }, []);
+  }, [usedIndices]);
 
   if (!isVisible || !currentPurchase) return null;
 
