@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PurchaseNotification from "./components/PurchaseNotification";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
@@ -58,6 +59,7 @@ function App() {
           <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
         </Routes>
         <Footer />
+        <PurchaseNotification />
         <Toaster />
       </BrowserRouter>
     </div>
