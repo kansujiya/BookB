@@ -230,13 +230,13 @@ const Cart = () => {
 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-gray-600">
-                    <span>Subtotal ({cart.reduce((total, item) => total + item.quantity, 0)} items)</span>
+                    <span>Subtotal ({cartItems.reduce((total, item) => total + item.quantity, 0)} items)</span>
                     <span className="font-semibold">₹{calculateSubtotal()}</span>
                   </div>
                   <div className="flex justify-between text-gray-600">
                     <span>Discount</span>
                     <span className="font-semibold text-green-600">
-                      -₹{cart.reduce((total, item) => total + ((item.originalPrice - item.currentPrice) * item.quantity), 0)}
+                      -₹{calculateOriginalTotal() - calculateSubtotal()}
                     </span>
                   </div>
                   <div className="border-t pt-4">
