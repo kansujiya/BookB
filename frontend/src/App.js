@@ -16,24 +16,29 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CancellationRefundPolicy from "./pages/CancellationRefundPolicy";
 import { Toaster } from "./components/ui/toaster";
+import { cartAPI, getSessionId } from "./api/client";
 
 function App() {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    const updateCartCount = () => {
-      const savedCart = localStorage.getItem('cart');
-      if (savedCart) {
-        const cart = JSON.parse(savedCart);
-        const count = cart.reduce((total, item) => total + item.quantity, 0);
+    const updateCartCount = async () => {
+      try {
+        const sessionId = getSessionId();
+        const response = await cartAPI.getCart(sessionId);
+        const cart = response.data;
+        const count = cart.items.reduce((total, item) => total + item.quantity, 0);
         setCartCount(count);
+      } catch (error) {
+        console.error('Error fetching cart count:', error);
+        setCartCount(0);
       }
     };
 
     updateCartCount();
     window.addEventListener('storage', updateCartCount);
 
-    const interval = setInterval(updateCartCount, 500);
+    const interval = setInterval(updateCartCount, 2000);
 
     return () => {
       window.removeEventListener('storage', updateCartCount);
