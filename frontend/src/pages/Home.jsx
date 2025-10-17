@@ -73,6 +73,7 @@ const Home = () => {
                 <img
                   src={heroBook.image}
                   alt="Master Software Design"
+                  loading="lazy"
                   className="w-full max-w-md h-auto object-contain transform hover:scale-105 transition-transform duration-300"
                 />
               </div>
