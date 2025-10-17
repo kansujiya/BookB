@@ -5,6 +5,7 @@ import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Card, CardContent } from '../components/ui/card';
 import { useToast } from '../hooks/use-toast';
+import { contactAPI } from '../api/client';
 
 const Contact = () => {
   const { toast } = useToast();
