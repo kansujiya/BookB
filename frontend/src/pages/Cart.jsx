@@ -40,7 +40,7 @@ const Cart = () => {
         setCartItems(itemsWithDetails);
       }
     } catch (error) {
-      console.error('Error fetching cart:', error);
+      // Silently handle errors
     } finally {
       setLoading(false);
     }
