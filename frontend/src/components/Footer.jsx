@@ -27,7 +27,7 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-2 text-gray-800">
               <Mail className="h-4 w-4" />
-              <span className="text-sm">contact@bookblaze.org</span>
+              <span className="text-sm">sell@bookblaze.org</span>
             </div>
             <div className="flex space-x-3 mt-4">
               <a href="#" className="bg-white p-2 rounded hover:bg-gray-100 transition-colors">
