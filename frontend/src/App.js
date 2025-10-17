@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -21,32 +21,35 @@ import { cartAPI, getSessionId } from "./api/client";
 function App() {
   const [cartCount, setCartCount] = useState(0);
 
+  const updateCartCount = useCallback(async () => {
+    try {
+      const sessionId = getSessionId();
+      const response = await cartAPI.getCart(sessionId);
+      const cart = response.data;
+      const count = cart.items && Array.isArray(cart.items) 
+        ? cart.items.reduce((total, item) => total + item.quantity, 0)
+        : 0;
+      setCartCount(count);
+    } catch (error) {
+      // Silently fail - cart might not exist yet
+      setCartCount(0);
+    }
+  }, []);
+
   useEffect(() => {
-    const updateCartCount = async () => {
-      try {
-        const sessionId = getSessionId();
-        const response = await cartAPI.getCart(sessionId);
-        const cart = response.data;
-        const count = cart.items && Array.isArray(cart.items) 
-          ? cart.items.reduce((total, item) => total + item.quantity, 0)
-          : 0;
-        setCartCount(count);
-      } catch (error) {
-        console.error('Error fetching cart count:', error);
-        setCartCount(0);
-      }
-    };
-
     updateCartCount();
+    
+    // Listen for storage events (when cart is updated)
     window.addEventListener('storage', updateCartCount);
-
-    const interval = setInterval(updateCartCount, 2000);
+    
+    // Listen for custom cart update event
+    window.addEventListener('cartUpdated', updateCartCount);
 
     return () => {
       window.removeEventListener('storage', updateCartCount);
-      clearInterval(interval);
+      window.removeEventListener('cartUpdated', updateCartCount);
     };
-  }, []);
+  }, [updateCartCount]);
 
   return (
     <div className="App">
