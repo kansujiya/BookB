@@ -43,20 +43,8 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: 'Email',
-      content: 'contact@bookblaze.org',
-      link: 'mailto:contact@bookblaze.org'
-    },
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: 'Phone',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: 'Address',
-      content: 'San Francisco, CA, USA',
-      link: null
+      content: 'sell@bookblaze.org',
+      link: 'mailto:sell@bookblaze.org'
     }
   ];
 
