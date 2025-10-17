@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ProductCard from '../components/ProductCard';
 import { useToast } from '../hooks/use-toast';
 import { productsAPI, cartAPI, getSessionId } from '../api/client';
@@ -17,7 +17,6 @@ const Products = () => {
       const response = await productsAPI.getAll();
       setProducts(response.data);
     } catch (error) {
-      console.error('Error fetching products:', error);
       toast({
         title: "Error loading products",
         description: "Please refresh the page to try again.",
@@ -28,7 +27,7 @@ const Products = () => {
     }
   };
 
-  const handleAddToCart = async (product) => {
+  const handleAddToCart = useCallback(async (product) => {
     try {
       const sessionId = getSessionId();
       await cartAPI.addItem(sessionId, {
@@ -36,22 +35,21 @@ const Products = () => {
         quantity: 1
       });
       
-      // Trigger storage event to update cart count
-      window.dispatchEvent(new Event('storage'));
+      // Trigger custom event for cart update
+      window.dispatchEvent(new Event('cartUpdated'));
       
       toast({
         title: "Added to cart!",
         description: `${product.title} has been added to your cart.`,
       });
     } catch (error) {
-      console.error('Error adding to cart:', error);
       toast({
         title: "Error",
         description: "Failed to add item to cart. Please try again.",
         variant: "destructive",
       });
     }
-  };
+  }, [toast]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-16">
