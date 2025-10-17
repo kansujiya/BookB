@@ -210,13 +210,13 @@ const Home = () => {
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {testimonials.slice(0, 3).map((testimonial) => (
+                {Array.isArray(testimonials) && testimonials.slice(0, 3).map((testimonial) => (
                   <TestimonialCard key={testimonial.id} testimonial={testimonial} />
                 ))}
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                {testimonials.slice(3).map((testimonial) => (
+                {Array.isArray(testimonials) && testimonials.slice(3).map((testimonial) => (
                   <TestimonialCard key={testimonial.id} testimonial={testimonial} />
                 ))}
               </div>
