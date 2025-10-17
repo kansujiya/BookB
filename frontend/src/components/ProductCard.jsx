@@ -1,11 +1,26 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from './ui/card';
 import { Button } from './ui/button';
 import { ShoppingCart } from 'lucide-react';
 
 const ProductCard = ({ product, onAddToCart }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/product/${product.slug}`);
+  };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    onAddToCart(product);
+  };
+
   return (
-    <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
+    <Card 
+      className="group hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="aspect-[4/3] overflow-hidden bg-gray-100">
         <img
           src={product.image}
@@ -24,7 +39,7 @@ const ProductCard = ({ product, onAddToCart }) => {
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Button
-          onClick={() => onAddToCart(product)}
+          onClick={handleAddToCart}
           className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold transition-colors"
         >
           <ShoppingCart className="mr-2 h-4 w-4" />
