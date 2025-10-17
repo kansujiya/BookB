@@ -3,39 +3,64 @@ import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import ProductCard from '../components/ProductCard';
 import TestimonialCard from '../components/TestimonialCard';
-import { products, testimonials, companyLogos, heroBook } from '../mockData';
+import { heroBook } from '../mockData';
 import { useToast } from '../hooks/use-toast';
+import { productsAPI, cartAPI, testimonialsAPI, getSessionId } from '../api/client';
 
 const Home = () => {
   const { toast } = useToast();
-  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
+    fetchData();
   }, []);
 
-  const handleAddToCart = (product) => {
-    const existingItem = cart.find((item) => item.id === product.id);
-    let newCart;
-    
-    if (existingItem) {
-      newCart = cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-    } else {
-      newCart = [...cart, { ...product, quantity: 1 }];
+  const fetchData = async () => {
+    try {
+      const [productsRes, testimonialsRes] = await Promise.all([
+        productsAPI.getAll(),
+        testimonialsAPI.getAll()
+      ]);
+      
+      setProducts(productsRes.data);
+      setTestimonials(testimonialsRes.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      toast({
+        title: "Error loading data",
+        description: "Please refresh the page to try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
-    
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    
-    toast({
-      title: "Added to cart!",
-      description: `${product.title} has been added to your cart.`,
-    });
+  };
+
+  const handleAddToCart = async (product) => {
+    try {
+      const sessionId = getSessionId();
+      await cartAPI.addItem(sessionId, {
+        product_id: product.id,
+        quantity: 1
+      });
+      
+      // Trigger storage event to update cart count
+      window.dispatchEvent(new Event('storage'));
+      
+      toast({
+        title: "Added to cart!",
+        description: `${product.title} has been added to your cart.`,
+      });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      toast({
+        title: "Error",
+        description: "Failed to add item to cart. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -93,7 +118,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Company Logos Section */}
+      {/* Company Logos Section - Keep as is with mock data */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
@@ -102,18 +127,6 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
             Every Software Professional
           </h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
-            {companyLogos.map((logo) => (
-              <div key={logo.id} className="flex justify-center items-center">
-                <img
-                  src={logo.image}
-                  alt={logo.name}
-                  className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-                />
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -127,15 +140,21 @@ const Home = () => {
             These are our all-time Business Explained Champions.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAddToCart={handleAddToCart}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={handleAddToCart}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -146,17 +165,25 @@ const Home = () => {
             What Readers Say?
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {testimonials.slice(0, 3).map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {testimonials.slice(3).map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {testimonials.slice(0, 3).map((testimonial) => (
+                  <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+                ))}
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                {testimonials.slice(3).map((testimonial) => (
+                  <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+                ))}
+              </div>
+            </>
+          )}
           
           <div className="text-center mt-12">
             <Button 
