@@ -118,7 +118,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Company Logos Section - Keep as is with mock data */}
+      {/* Company Logos Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
@@ -127,6 +127,44 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
             Every Software Professional
           </h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.unsplash.com/photo-1661347998423-b15d37d6f61e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
+                alt="Samsung"
+                className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.unsplash.com/photo-1661347998996-dcf102498c63?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
+                alt="TikTok"
+                className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.unsplash.com/photo-1760386129108-d17b9cdfc4fa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHw0fHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
+                alt="Audible"
+                className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.pexels.com/photos/7202944/pexels-photo-7202944.jpeg"
+                alt="Logitech"
+                className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.pexels.com/photos/2449452/pexels-photo-2449452.jpeg"
+                alt="Tesla"
+                className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
