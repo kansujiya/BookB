@@ -156,7 +156,7 @@ const Cart = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
-            {cart.map((item) => (
+            {cartItems.map((item) => (
               <Card key={item.id} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex flex-col sm:flex-row gap-4">
@@ -175,7 +175,7 @@ const Cart = () => {
                         {item.title}
                       </h3>
                       <p className="text-2xl font-bold text-yellow-600 mb-4">
-                        ₹{item.currentPrice}
+                        ₹{item.current_price}
                       </p>
 
                       <div className="flex items-center justify-between">
@@ -184,7 +184,7 @@ const Cart = () => {
                           <Button
                             size="sm"
                             variant="ghost"
-                            onClick={() => handleUpdateQuantity(item.id, -1)}
+                            onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
                             className="hover:bg-gray-200"
                           >
                             <Minus className="h-4 w-4" />
@@ -195,7 +195,7 @@ const Cart = () => {
                           <Button
                             size="sm"
                             variant="ghost"
-                            onClick={() => handleUpdateQuantity(item.id, 1)}
+                            onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
                             className="hover:bg-gray-200"
                           >
                             <Plus className="h-4 w-4" />
