@@ -33,8 +33,12 @@ const ProductCard = ({ product, onAddToCart }) => {
           {product.title}
         </h3>
         <div className="flex items-center space-x-2">
-          <span className="text-gray-400 line-through text-sm">₹{product.originalPrice}</span>
-          <span className="text-2xl font-bold text-yellow-600">₹{product.currentPrice}</span>
+          <span className="text-gray-400 line-through text-sm">
+            ₹{product.original_price || product.originalPrice}
+          </span>
+          <span className="text-2xl font-bold text-yellow-600">
+            ₹{product.current_price || product.currentPrice}
+          </span>
         </div>
       </CardContent>
       <CardFooter className="p-6 pt-0">
