@@ -3,55 +3,77 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Check, ArrowLeft } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-import { products } from '../mockData';
 import { useToast } from '../hooks/use-toast';
+import { productsAPI, cartAPI, getSessionId } from '../api/client';
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [cart, setCart] = useState([]);
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const foundProduct = products.find(p => p.slug === slug);
-    if (foundProduct) {
-      setProduct(foundProduct);
-    }
-    
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
+    fetchProduct();
   }, [slug]);
 
-  const handleAddToCart = () => {
-    const existingItem = cart.find((item) => item.id === product.id);
-    let newCart;
-    
-    if (existingItem) {
-      newCart = cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-    } else {
-      newCart = [...cart, { ...product, quantity: 1 }];
+  const fetchProduct = async () => {
+    try {
+      const response = await productsAPI.getBySlug(slug);
+      setProduct(response.data);
+    } catch (error) {
+      console.error('Error fetching product:', error);
+      if (error.response?.status === 404) {
+        toast({
+          title: "Product not found",
+          description: "This product doesn't exist.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setLoading(false);
     }
-    
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    
-    toast({
-      title: "Added to cart!",
-      description: `${product.title} has been added to your cart.`,
-    });
   };
 
-  const handleBuyNow = () => {
-    handleAddToCart();
+  const handleAddToCart = async () => {
+    try {
+      const sessionId = getSessionId();
+      await cartAPI.addItem(sessionId, {
+        product_id: product.id,
+        quantity: 1
+      });
+      
+      // Trigger storage event to update cart count
+      window.dispatchEvent(new Event('storage'));
+      
+      toast({
+        title: "Added to cart!",
+        description: `${product.title} has been added to your cart.`,
+      });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      toast({
+        title: "Error",
+        description: "Failed to add item to cart. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleBuyNow = async () => {
+    await handleAddToCart();
     setTimeout(() => {
       navigate('/cart');
     }, 500);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-16 flex justify-center items-center">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -107,18 +129,18 @@ const ProductDetail = () => {
               
               <div className="flex items-center space-x-3 mb-6">
                 <span className="text-gray-400 line-through text-2xl">
-                  ₹{product.originalPrice}
+                  ₹{product.original_price}
                 </span>
                 <span className="text-4xl font-bold text-yellow-600">
-                  ₹{product.currentPrice}
+                  ₹{product.current_price}
                 </span>
                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
-                  Save ₹{product.originalPrice - product.currentPrice}
+                  Save ₹{product.original_price - product.current_price}
                 </span>
               </div>
 
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                {product.longDescription}
+                {product.long_description}
               </p>
 
               {/* Features */}
