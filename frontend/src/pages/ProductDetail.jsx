@@ -24,7 +24,6 @@ const ProductDetail = () => {
       const response = await productsAPI.getBySlug(slug);
       setProduct(response.data);
     } catch (error) {
-      console.error('Error fetching product:', error);
       if (error.response?.status === 404) {
         toast({
           title: "Product not found",
@@ -45,14 +44,13 @@ const ProductDetail = () => {
         quantity: 1
       });
       
-      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new Event('cartUpdated'));
       
       toast({
         title: "Added to cart!",
         description: `${product.title} has been added to your cart.`,
       });
     } catch (error) {
-      console.error('Error adding to cart:', error);
       toast({
         title: "Error",
         description: "Failed to add item to cart. Please try again.",
