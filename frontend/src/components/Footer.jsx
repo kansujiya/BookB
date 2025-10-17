@@ -88,27 +88,27 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Store Policies</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="#" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
+                <Link to="/pricing-policy" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
                   Pricing Policy
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
+                <Link to="/shipping-policy" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
                   Shipping Policy
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
+                <Link to="/terms-and-conditions" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
                   Terms and Conditions
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
+                <Link to="/privacy-policy" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
+                <Link to="/cancellation-refund-policy" className="text-gray-800 hover:text-gray-900 text-sm transition-colors">
                   Cancellation/Refund Policy
                 </Link>
               </li>
