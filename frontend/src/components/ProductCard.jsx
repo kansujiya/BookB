@@ -1,0 +1,38 @@
+import React from 'react';
+import { Card, CardContent, CardFooter } from './ui/card';
+import { Button } from './ui/button';
+import { ShoppingCart } from 'lucide-react';
+
+const ProductCard = ({ product, onAddToCart }) => {
+  return (
+    <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
+      <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+      <CardContent className="p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+          {product.title}
+        </h3>
+        <div className="flex items-center space-x-2">
+          <span className="text-gray-400 line-through text-sm">₹{product.originalPrice}</span>
+          <span className="text-2xl font-bold text-yellow-600">₹{product.currentPrice}</span>
+        </div>
+      </CardContent>
+      <CardFooter className="p-6 pt-0">
+        <Button
+          onClick={() => onAddToCart(product)}
+          className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold transition-colors"
+        >
+          <ShoppingCart className="mr-2 h-4 w-4" />
+          Add to Cart
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
+
+export default ProductCard;
