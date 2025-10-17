@@ -27,7 +27,9 @@ function App() {
         const sessionId = getSessionId();
         const response = await cartAPI.getCart(sessionId);
         const cart = response.data;
-        const count = cart.items.reduce((total, item) => total + item.quantity, 0);
+        const count = cart.items && Array.isArray(cart.items) 
+          ? cart.items.reduce((total, item) => total + item.quantity, 0)
+          : 0;
         setCartCount(count);
       } catch (error) {
         console.error('Error fetching cart count:', error);
