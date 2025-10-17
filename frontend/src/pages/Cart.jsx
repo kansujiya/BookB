@@ -55,14 +55,13 @@ const Cart = () => {
       setCartItems(prev => prev.filter(item => item.id !== productId));
       
       // Trigger cart count update
-      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new Event('cartUpdated'));
       
       toast({
         title: "Item removed",
         description: "The item has been removed from your cart.",
       });
     } catch (error) {
-      console.error('Error removing item:', error);
       toast({
         title: "Error",
         description: "Failed to remove item from cart.",
@@ -88,9 +87,8 @@ const Cart = () => {
       ));
       
       // Trigger cart count update
-      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new Event('cartUpdated'));
     } catch (error) {
-      console.error('Error updating quantity:', error);
       toast({
         title: "Error",
         description: "Failed to update quantity.",
