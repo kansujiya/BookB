@@ -1,0 +1,350 @@
+{
+  "info": {
+    "name": "BookBlaze API Collection",
+    "_postman_id": "bookblaze-api-collection",
+    "description": "Complete API collection for BookBlaze eCommerce platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8001",
+      "type": "string"
+    },
+    {
+      "key": "session_id",
+      "value": "session-test-123",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products"]
+            },
+            "description": "Fetches all products from the database.\n\n**Frontend Usage:**\n- Home.jsx - fetchData()\n- Products.jsx - fetchProducts()"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{base_url}}/api/products"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"prod-1\",\n    \"title\": \"Software System Design\",\n    \"slug\": \"software-system-design\",\n    \"image\": \"https://...\",\n    \"original_price\": 1499,\n    \"current_price\": 499,\n    \"description\": \"Master system design...\",\n    \"long_description\": \"...\",\n    \"features\": [\"100+ Flowcharts\", \"...\"]\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Product by Slug",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/products/software-system-design",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products", "software-system-design"]
+            },
+            "description": "Fetches a single product by its slug.\n\n**Frontend Usage:**\n- ProductDetail.jsx - fetchProduct()"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"id\": \"prod-1\",\n  \"title\": \"Software System Design\",\n  \"slug\": \"software-system-design\",\n  \"image\": \"https://...\",\n  \"original_price\": 1499,\n  \"current_price\": 499,\n  \"description\": \"Master system design...\",\n  \"long_description\": \"...\",\n  \"features\": [\"100+ Flowcharts\", \"...\"]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Product (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Book Title\",\n  \"slug\": \"new-book-title\",\n  \"image\": \"https://example.com/image.jpg\",\n  \"original_price\": 1499,\n  \"current_price\": 499,\n  \"description\": \"Short description\",\n  \"long_description\": \"Detailed description\",\n  \"features\": [\"Feature 1\", \"Feature 2\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products"]
+            },
+            "description": "Creates a new product (Admin only).\n\n**Frontend Usage:**\n- Not used in current frontend (Admin feature)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/cart/{{session_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cart", "{{session_id}}"]
+            },
+            "description": "Gets the cart for a specific session.\n\n**Frontend Usage:**\n- App.js - updateCartCount()\n- Cart.jsx - fetchCart()"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"id\": \"cart-123\",\n  \"session_id\": \"session-test-123\",\n  \"items\": [\n    {\n      \"product_id\": \"prod-1\",\n      \"quantity\": 2,\n      \"price_at_time\": 499\n    }\n  ],\n  \"created_at\": \"2025-01-15T10:30:00\",\n  \"updated_at\": \"2025-01-15T10:35:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add Item to Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_id\": \"prod-1\",\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cart/{{session_id}}/items",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cart", "{{session_id}}", "items"]
+            },
+            "description": "Adds an item to the cart.\n\n**Frontend Usage:**\n- Home.jsx - handleAddToCart()\n- Products.jsx - handleAddToCart()\n- ProductDetail.jsx - handleAddToCart()"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"id\": \"cart-123\",\n  \"session_id\": \"session-test-123\",\n  \"items\": [\n    {\n      \"product_id\": \"prod-1\",\n      \"quantity\": 1,\n      \"price_at_time\": 499\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Cart Item Quantity",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cart/{{session_id}}/items/prod-1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cart", "{{session_id}}", "items", "prod-1"]
+            },
+            "description": "Updates the quantity of an item in the cart.\n\n**Frontend Usage:**\n- Cart.jsx - handleUpdateQuantity()"
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Item from Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/cart/{{session_id}}/items/prod-1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cart", "{{session_id}}", "items", "prod-1"]
+            },
+            "description": "Removes an item from the cart.\n\n**Frontend Usage:**\n- Cart.jsx - handleRemoveItem()"
+          },
+          "response": []
+        },
+        {
+          "name": "Clear Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/cart/{{session_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cart", "{{session_id}}"]
+            },
+            "description": "Clears all items from the cart.\n\n**Frontend Usage:**\n- Not directly used (cart is cleared after order creation)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"session-test-123\",\n  \"customer_name\": \"John Doe\",\n  \"customer_email\": \"john@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/orders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "orders"]
+            },
+            "description": "Creates an order from the cart.\n\n**Frontend Usage:**\n- Cart.jsx - handleCheckout() (ready to implement)"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"id\": \"order-123\",\n  \"order_number\": \"ORD-ABC123XYZ\",\n  \"customer_email\": \"john@example.com\",\n  \"customer_name\": \"John Doe\",\n  \"items\": [\n    {\n      \"product_id\": \"prod-1\",\n      \"product_title\": \"Software System Design\",\n      \"quantity\": 1,\n      \"price\": 499\n    }\n  ],\n  \"subtotal\": 499,\n  \"discount\": 1000,\n  \"total\": 499,\n  \"status\": \"completed\",\n  \"payment_status\": \"paid\",\n  \"created_at\": \"2025-01-15T10:40:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Order by Number",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/orders/ORD-ABC123XYZ",
+              "host": ["{{base_url}}"],
+              "path": ["api", "orders", "ORD-ABC123XYZ"]
+            },
+            "description": "Gets order details by order number.\n\n**Frontend Usage:**\n- OrderConfirmation.jsx (not yet implemented)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Orders by Email",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/orders/email/john@example.com",
+              "host": ["{{base_url}}"],
+              "path": ["api", "orders", "email", "john@example.com"]
+            },
+            "description": "Gets all orders for a specific email address.\n\n**Frontend Usage:**\n- MyOrders.jsx (not yet implemented)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "item": [
+        {
+          "name": "Submit Contact Form",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane@example.com\",\n  \"subject\": \"Product Inquiry\",\n  \"message\": \"I have a question about the Software System Design book.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/contact",
+              "host": ["{{base_url}}"],
+              "path": ["api", "contact"]
+            },
+            "description": "Submits a contact form message.\n\n**Frontend Usage:**\n- Contact.jsx - handleSubmit()"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"message\": \"Contact message received successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Contact Messages (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/contact/messages",
+              "host": ["{{base_url}}"],
+              "path": ["api", "contact", "messages"]
+            },
+            "description": "Gets all contact messages (Admin only).\n\n**Frontend Usage:**\n- Admin panel (not yet implemented)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Testimonials",
+      "item": [
+        {
+          "name": "Get All Testimonials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/testimonials",
+              "host": ["{{base_url}}"],
+              "path": ["api", "testimonials"]
+            },
+            "description": "Gets all active testimonials.\n\n**Frontend Usage:**\n- Home.jsx - fetchData()"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "status": "OK",
+              "code": 200,
+              "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Ankit Sharma\",\n    \"position\": \"Software Engineer at Google\",\n    \"image\": \"https://...\",\n    \"text\": \"This book gave me confidence...\",\n    \"is_active\": true,\n    \"created_at\": \"2025-01-15T10:00:00\"\n  }\n]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
