@@ -304,36 +304,20 @@ const Checkout = () => {
                     )}
                   </div>
 
-                  {/* City and State */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="city">City *</Label>
-                      <Input
-                        id="city"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleInputChange}
-                        placeholder="Mumbai"
-                        className={errors.city ? 'border-red-500' : ''}
-                      />
-                      {errors.city && (
-                        <p className="text-red-500 text-sm mt-1">{errors.city}</p>
-                      )}
-                    </div>
-                    <div>
-                      <Label htmlFor="state">State *</Label>
-                      <Input
-                        id="state"
-                        name="state"
-                        value={formData.state}
-                        onChange={handleInputChange}
-                        placeholder="Maharashtra"
-                        className={errors.state ? 'border-red-500' : ''}
-                      />
-                      {errors.state && (
-                        <p className="text-red-500 text-sm mt-1">{errors.state}</p>
-                      )}
-                    </div>
+                  {/* City or Town */}
+                  <div>
+                    <Label htmlFor="city">City or Town *</Label>
+                    <Input
+                      id="city"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
+                      placeholder="Mumbai"
+                      className={errors.city ? 'border-red-500' : ''}
+                    />
+                    {errors.city && (
+                      <p className="text-red-500 text-sm mt-1">{errors.city}</p>
+                    )}
                   </div>
 
                   {/* Pincode */}
