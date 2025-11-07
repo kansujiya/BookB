@@ -59,6 +59,11 @@ class OrderCreate(BaseModel):
     session_id: str
     customer_name: str
     customer_email: EmailStr
+    customer_phone: str = ""
+    billing_address: str = ""
+    city: str = ""
+    state: str = ""
+    pincode: str = ""
 
 class Order(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
