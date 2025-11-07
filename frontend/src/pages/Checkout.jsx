@@ -100,11 +100,7 @@ const Checkout = () => {
     }
     
     if (!formData.city.trim()) {
-      newErrors.city = 'City is required';
-    }
-    
-    if (!formData.state.trim()) {
-      newErrors.state = 'State is required';
+      newErrors.city = 'City/Town is required';
     }
     
     if (!formData.pincode.trim()) {
