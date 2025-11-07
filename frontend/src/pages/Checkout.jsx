@@ -22,7 +22,6 @@ const Checkout = () => {
     phone: '',
     address: '',
     city: '',
-    state: '',
     pincode: ''
   });
 
