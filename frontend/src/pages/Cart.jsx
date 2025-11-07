@@ -106,11 +106,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    toast({
-      title: "Checkout initiated",
-      description: "Proceeding to checkout...",
-    });
-    // In a real app, this would navigate to a checkout page
+    navigate('/checkout');
   };
 
   if (loading) {
