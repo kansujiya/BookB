@@ -148,7 +148,7 @@ const Checkout = () => {
         customer_phone: formData.phone,
         billing_address: formData.address,
         city: formData.city,
-        state: formData.state,
+        state: "",
         pincode: formData.pincode
       };
 
