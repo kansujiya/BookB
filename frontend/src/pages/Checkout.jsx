@@ -172,11 +172,6 @@ const Checkout = () => {
       // Trigger cart count update
       window.dispatchEvent(new Event('cartUpdated'));
 
-      // Redirect to products after 5 seconds
-      setTimeout(() => {
-        navigate('/products');
-      }, 5000);
-
     } catch (error) {
       console.error('Payment error:', error);
       toast({
