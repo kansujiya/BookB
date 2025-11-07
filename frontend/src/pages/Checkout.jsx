@@ -20,9 +20,7 @@ const Checkout = () => {
     name: '',
     email: '',
     phone: '',
-    address: '',
-    city: '',
-    pincode: ''
+    city: ''
   });
 
   const [errors, setErrors] = useState({});
