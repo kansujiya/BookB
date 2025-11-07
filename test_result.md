@@ -111,11 +111,14 @@ backend:
     file: "/app/backend/models.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Added billing fields (customer_phone, billing_address, city, state, pincode) to OrderCreate and Order models"
+      - working: true
+        agent: "testing"
+        comment: "TESTED: All billing fields (customer_phone, billing_address, city, state, pincode) are correctly defined in both OrderCreate and Order models with default empty strings. Models accept and validate data properly."
 
   - task: "Update order creation endpoint to save billing details"
     implemented: true
@@ -123,11 +126,14 @@ backend:
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Modified POST /api/orders endpoint to accept and store billing details from OrderCreate model"
+      - working: true
+        agent: "testing"
+        comment: "TESTED: POST /api/orders endpoint successfully accepts and saves all billing details. Verified with complete billing info (name, email, phone, address, city, state, pincode). Order creation works correctly, cart is cleared after order, and all billing fields are persisted. Edge cases tested: empty billing fields work (default to ''), invalid session returns 400, empty cart returns 400. GET /api/orders/{order_number} retrieves orders with all billing details intact. All 8 test scenarios passed."
 
 frontend:
   - task: "Create Checkout page component"
