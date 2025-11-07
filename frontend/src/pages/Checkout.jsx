@@ -93,18 +93,8 @@ const Checkout = () => {
       newErrors.phone = 'Phone number must be 10 digits';
     }
     
-    if (!formData.address.trim()) {
-      newErrors.address = 'Address is required';
-    }
-    
     if (!formData.city.trim()) {
       newErrors.city = 'City/Town is required';
-    }
-    
-    if (!formData.pincode.trim()) {
-      newErrors.pincode = 'Pincode is required';
-    } else if (!/^\d{6}$/.test(formData.pincode)) {
-      newErrors.pincode = 'Pincode must be 6 digits';
     }
     
     setErrors(newErrors);
