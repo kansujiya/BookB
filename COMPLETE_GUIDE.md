@@ -355,7 +355,7 @@ session_id: "session-abc123-1234567890"
 
 **Your app URL:**
 ```
-https://digital-gradebook-1.preview.emergentagent.com
+https://ebook-store-45.preview.emergentagent.com
 ```
 
 ### Option 2: Deploy Locally
