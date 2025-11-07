@@ -70,6 +70,11 @@ class Order(BaseModel):
     order_number: str
     customer_email: str
     customer_name: str
+    customer_phone: str = ""
+    billing_address: str = ""
+    city: str = ""
+    state: str = ""
+    pincode: str = ""
     items: List[OrderItem]
     subtotal: int
     discount: int
