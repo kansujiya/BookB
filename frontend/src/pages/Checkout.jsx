@@ -134,10 +134,10 @@ const Checkout = () => {
         customer_name: formData.name,
         customer_email: formData.email,
         customer_phone: formData.phone,
-        billing_address: formData.address,
+        billing_address: "",
         city: formData.city,
         state: "",
-        pincode: formData.pincode
+        pincode: ""
       };
 
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/orders`, {
