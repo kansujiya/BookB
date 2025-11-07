@@ -276,22 +276,6 @@ const Checkout = () => {
                     )}
                   </div>
 
-                  {/* Address */}
-                  <div>
-                    <Label htmlFor="address">Street Address *</Label>
-                    <Input
-                      id="address"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleInputChange}
-                      placeholder="123 Main Street, Apartment 4B"
-                      className={errors.address ? 'border-red-500' : ''}
-                    />
-                    {errors.address && (
-                      <p className="text-red-500 text-sm mt-1">{errors.address}</p>
-                    )}
-                  </div>
-
                   {/* City or Town */}
                   <div>
                     <Label htmlFor="city">City or Town *</Label>
@@ -305,22 +289,6 @@ const Checkout = () => {
                     />
                     {errors.city && (
                       <p className="text-red-500 text-sm mt-1">{errors.city}</p>
-                    )}
-                  </div>
-
-                  {/* Pincode */}
-                  <div>
-                    <Label htmlFor="pincode">Pincode *</Label>
-                    <Input
-                      id="pincode"
-                      name="pincode"
-                      value={formData.pincode}
-                      onChange={handleInputChange}
-                      placeholder="400001"
-                      className={errors.pincode ? 'border-red-500' : ''}
-                    />
-                    {errors.pincode && (
-                      <p className="text-red-500 text-sm mt-1">{errors.pincode}</p>
                     )}
                   </div>
                 </form>
