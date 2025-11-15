@@ -150,6 +150,63 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Success Cases Section - Company Logos */}
+      <section className="py-20 bg-white border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Must Have Guide For Every Software Professional
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Trusted by professionals from leading tech companies worldwide
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-12 items-center justify-items-center">
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.unsplash.com/photo-1661347998423-b15d37d6f61e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
+                alt="Samsung"
+                loading="lazy"
+                className="h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.unsplash.com/photo-1661347998996-dcf102498c63?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
+                alt="TikTok"
+                loading="lazy"
+                className="h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.unsplash.com/photo-1760386129108-d17b9cdfc4fa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHw0fHx0ZWNoJTIwY29tcGFueSUyMGxvZ29zfGVufDB8fHx8MTc2MDcwMDEwM3ww&ixlib=rb-4.1.0&q=85"
+                alt="Audible"
+                loading="lazy"
+                className="h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.pexels.com/photos/7202944/pexels-photo-7202944.jpeg"
+                alt="Logitech"
+                loading="lazy"
+                className="h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              <img
+                src="https://images.pexels.com/photos/2449452/pexels-photo-2449452.jpeg"
+                alt="Tesla"
+                loading="lazy"
+                className="h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
