@@ -8,6 +8,17 @@ import { Label } from '../components/ui/label';
 import { useToast } from '../hooks/use-toast';
 import { cartAPI, getSessionId, productsAPI } from '../api/client';
 
+// Load Razorpay script
+const loadRazorpayScript = () => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
 const Checkout = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
