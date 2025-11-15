@@ -304,6 +304,35 @@ async def verify_payment(payment_data: PaymentVerification):
             else:
                 formatted_date = str(created_at)
             
+            # Fetch product details with download links for purchased items
+            items_with_links = []
+            purchased_product_ids = []
+            for item in updated_order['items']:
+                product = await db.products.find_one({"id": item['product_id']})
+                if product:
+                    purchased_product_ids.append(item['product_id'])
+                    items_with_links.append({
+                        'product_id': item['product_id'],
+                        'product_title': item['product_title'],
+                        'quantity': item['quantity'],
+                        'price': item['price'],
+                        'download_link': product.get('download_link', '')
+                    })
+            
+            # Fetch other products for recommendations (exclude purchased ones)
+            other_products_cursor = db.products.find({
+                "id": {"$nin": purchased_product_ids}
+            }).limit(3)
+            other_products_list = await other_products_cursor.to_list(3)
+            
+            other_products = []
+            for prod in other_products_list:
+                other_products.append({
+                    'title': prod['title'],
+                    'image': prod['image'],
+                    'current_price': prod['current_price']
+                })
+            
             email_data = {
                 'customer_name': updated_order['customer_name'],
                 'customer_email': updated_order['customer_email'],
@@ -312,8 +341,11 @@ async def verify_payment(payment_data: PaymentVerification):
                 'order_number': updated_order['order_number'],
                 'created_at': formatted_date,
                 'items': updated_order['items'],
+                'items_with_links': items_with_links,
                 'subtotal': updated_order['subtotal'],
-                'total': updated_order['total']
+                'total': updated_order['total'],
+                'payment_id': payment_id,
+                'other_products': other_products
             }
             
             await send_order_confirmation_email(email_data)
