@@ -38,6 +38,7 @@ const Checkout = () => {
 
   useEffect(() => {
     fetchCart();
+    loadRazorpayScript();
   }, []);
 
   const fetchCart = async () => {
