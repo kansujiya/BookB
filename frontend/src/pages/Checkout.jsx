@@ -284,7 +284,7 @@ const Checkout = () => {
               <p className="text-gray-600 mb-4">
                 Thank you for your purchase.
               </p>
-              <div className="bg-blue-50 border border-yellow-200 rounded-lg p-4 mb-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                 <p className="text-gray-800 font-semibold">
                   The team will provide PDF access in the next 24 Hours to download.
                 </p>

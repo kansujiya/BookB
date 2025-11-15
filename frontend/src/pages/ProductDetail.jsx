@@ -157,7 +157,7 @@ const ProductDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Image */}
             <div className="flex flex-col space-y-6">
-              <div className="bg-gradient-to-br from-blue-50 to-yellow-100 p-8 rounded-2xl">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -167,21 +167,21 @@ const ProductDetail = () => {
 
               {/* Trust Badges */}
               <div className="grid grid-cols-3 gap-4">
-                <Card className="text-center border-yellow-200">
+                <Card className="text-center border-blue-200">
                   <CardContent className="p-4">
                     <Users className="h-8 w-8 text-blue-700 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-gray-900">1000+</p>
                     <p className="text-xs text-gray-600">Engineers</p>
                   </CardContent>
                 </Card>
-                <Card className="text-center border-yellow-200">
+                <Card className="text-center border-blue-200">
                   <CardContent className="p-4">
                     <Star className="h-8 w-8 text-blue-700 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-gray-900">4.8/5</p>
                     <p className="text-xs text-gray-600">Rating</p>
                   </CardContent>
                 </Card>
-                <Card className="text-center border-yellow-200">
+                <Card className="text-center border-blue-200">
                   <CardContent className="p-4">
                     <Download className="h-8 w-8 text-blue-700 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-gray-900">Instant</p>
@@ -278,7 +278,7 @@ const ProductDetail = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {tableOfContents.map((chapter, index) => (
                       <div key={index} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="flex-shrink-0 w-8 h-8 bg-yellow-100 text-blue-800 rounded-full flex items-center justify-center font-semibold text-sm">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center font-semibold text-sm">
                           {index + 1}
                         </span>
                         <span className="text-gray-700 font-medium">{chapter}</span>
@@ -374,7 +374,7 @@ const ProductDetail = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
-                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="h-8 w-8 text-blue-700" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -388,7 +388,7 @@ const ProductDetail = () => {
 
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
-                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BookOpen className="h-8 w-8 text-blue-700" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -402,7 +402,7 @@ const ProductDetail = () => {
 
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
-                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Award className="h-8 w-8 text-blue-700" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">

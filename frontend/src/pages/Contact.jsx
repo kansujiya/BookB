@@ -62,7 +62,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-yellow-300 to-yellow-400 py-16">
+      <section className="bg-gradient-to-r from-blue-100 to-blue-200 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Get In Touch
@@ -172,7 +172,7 @@ const Contact = () => {
                   <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <div className="bg-yellow-100 p-3 rounded-lg">
+                        <div className="bg-blue-100 p-3 rounded-lg">
                           <div className="text-blue-700">
                             {info.icon}
                           </div>
