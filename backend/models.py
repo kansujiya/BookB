@@ -81,11 +81,27 @@ class Order(BaseModel):
     total: int
     status: str = "pending"
     payment_status: str = "pending"
+    razorpay_order_id: str = ""
+    razorpay_payment_id: str = ""
+    razorpay_signature: str = ""
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
     class Config:
         from_attributes = True
+
+# Razorpay Payment Models
+class RazorpayOrderCreate(BaseModel):
+    amount: int  # Amount in paise (INR)
+    currency: str = "INR"
+    receipt: str
+    notes: dict = {}
+
+class PaymentVerification(BaseModel):
+    razorpay_order_id: str
+    razorpay_payment_id: str
+    razorpay_signature: str
+    order_number: str
 
 # Contact Models
 class ContactMessageCreate(BaseModel):
