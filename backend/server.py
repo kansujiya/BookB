@@ -232,6 +232,72 @@ async def clear_cart(session_id: str):
         logger.error(f"Error clearing cart: {str(e)}")
         raise HTTPException(status_code=500, detail="Error clearing cart")
 
+# ==================== RAZORPAY ENDPOINTS ====================
+
+@api_router.post("/razorpay/create-order")
+async def create_razorpay_order(order_data: RazorpayOrderCreate):
+    """Create Razorpay order"""
+    try:
+        razorpay_order = razorpay_client.order.create({
+            "amount": order_data.amount,  # Amount in paise
+            "currency": order_data.currency,
+            "receipt": order_data.receipt,
+            "notes": order_data.notes,
+            "payment_capture": 1
+        })
+        logger.info(f"Razorpay order created: {razorpay_order['id']}")
+        return razorpay_order
+    except Exception as e:
+        logger.error(f"Error creating Razorpay order: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error creating Razorpay order: {str(e)}")
+
+@api_router.post("/razorpay/verify-payment")
+async def verify_payment(payment_data: PaymentVerification):
+    """Verify Razorpay payment signature"""
+    try:
+        # Verify signature
+        signature = payment_data.razorpay_signature
+        order_id = payment_data.razorpay_order_id
+        payment_id = payment_data.razorpay_payment_id
+        
+        # Generate expected signature
+        generated_signature = hmac.new(
+            os.environ['RAZORPAY_KEY_SECRET'].encode(),
+            f"{order_id}|{payment_id}".encode(),
+            hashlib.sha256
+        ).hexdigest()
+        
+        if generated_signature != signature:
+            raise HTTPException(status_code=400, detail="Invalid payment signature")
+        
+        # Update order with payment details
+        order = await db.orders.find_one({"order_number": payment_data.order_number})
+        if not order:
+            raise HTTPException(status_code=404, detail="Order not found")
+        
+        await db.orders.update_one(
+            {"order_number": payment_data.order_number},
+            {
+                "$set": {
+                    "razorpay_order_id": order_id,
+                    "razorpay_payment_id": payment_id,
+                    "razorpay_signature": signature,
+                    "payment_status": "paid",
+                    "status": "completed",
+                    "updated_at": datetime.utcnow()
+                }
+            }
+        )
+        
+        logger.info(f"Payment verified for order: {payment_data.order_number}")
+        return {"status": "success", "message": "Payment verified successfully"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error verifying payment: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error verifying payment: {str(e)}")
+
 # ==================== ORDERS ENDPOINTS ====================
 
 @api_router.post("/orders", response_model=Order)
