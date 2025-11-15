@@ -69,7 +69,7 @@ const ProductDetail = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 py-16 flex justify-center items-center">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
       </div>
     );
   }
@@ -157,7 +157,7 @@ const ProductDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Image */}
             <div className="flex flex-col space-y-6">
-              <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl">
+              <div className="bg-gradient-to-br from-blue-50 to-yellow-100 p-8 rounded-2xl">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -169,21 +169,21 @@ const ProductDetail = () => {
               <div className="grid grid-cols-3 gap-4">
                 <Card className="text-center border-yellow-200">
                   <CardContent className="p-4">
-                    <Users className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
+                    <Users className="h-8 w-8 text-blue-700 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-gray-900">1000+</p>
                     <p className="text-xs text-gray-600">Engineers</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center border-yellow-200">
                   <CardContent className="p-4">
-                    <Star className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
+                    <Star className="h-8 w-8 text-blue-700 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-gray-900">4.8/5</p>
                     <p className="text-xs text-gray-600">Rating</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center border-yellow-200">
                   <CardContent className="p-4">
-                    <Download className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
+                    <Download className="h-8 w-8 text-blue-700 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-gray-900">Instant</p>
                     <p className="text-xs text-gray-600">Download</p>
                   </CardContent>
@@ -194,8 +194,8 @@ const ProductDetail = () => {
             {/* Product Info */}
             <div>
               <div className="flex items-center space-x-2 mb-3">
-                <Award className="h-5 w-5 text-yellow-600" />
-                <span className="text-sm font-semibold text-yellow-600">BESTSELLER</span>
+                <Award className="h-5 w-5 text-blue-700" />
+                <span className="text-sm font-semibold text-blue-700">BESTSELLER</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -206,7 +206,7 @@ const ProductDetail = () => {
                 <span className="text-gray-400 line-through text-2xl">
                   ₹{product.original_price}
                 </span>
-                <span className="text-4xl font-bold text-yellow-600">
+                <span className="text-4xl font-bold text-blue-700">
                   ₹{product.current_price}
                 </span>
                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
@@ -221,7 +221,7 @@ const ProductDetail = () => {
               {/* What You'll Learn */}
               <div className="mb-8 bg-gray-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                  <BookOpen className="h-5 w-5 mr-2 text-yellow-600" />
+                  <BookOpen className="h-5 w-5 mr-2 text-blue-700" />
                   What You'll Learn:
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -239,7 +239,7 @@ const ProductDetail = () => {
                 <Button
                   onClick={handleBuyNow}
                   size="lg"
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg py-7 transition-all transform hover:scale-105 shadow-lg"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold text-lg py-7 transition-all transform hover:scale-105 shadow-lg"
                 >
                   <ShoppingCart className="mr-2 h-5 w-5" />
                   Buy Now - Instant Access
@@ -249,7 +249,7 @@ const ProductDetail = () => {
                   onClick={handleAddToCart}
                   size="lg"
                   variant="outline"
-                  className="w-full border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-50 font-semibold text-lg py-7 transition-all"
+                  className="w-full border-2 border-blue-600 text-blue-700 hover:bg-blue-50 font-semibold text-lg py-7 transition-all"
                 >
                   Add to Cart
                 </Button>
@@ -292,7 +292,7 @@ const ProductDetail = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {tableOfContents.map((chapter, index) => (
                       <div key={index} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="flex-shrink-0 w-8 h-8 bg-yellow-100 text-yellow-700 rounded-full flex items-center justify-center font-semibold text-sm">
+                        <span className="flex-shrink-0 w-8 h-8 bg-yellow-100 text-blue-800 rounded-full flex items-center justify-center font-semibold text-sm">
                           {index + 1}
                         </span>
                         <span className="text-gray-700 font-medium">{chapter}</span>
@@ -367,7 +367,7 @@ const ProductDetail = () => {
                     <Button
                       onClick={handleBuyNow}
                       size="lg"
-                      className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold"
+                      className="bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold"
                     >
                       Get Full Access Now
                     </Button>
@@ -389,7 +389,7 @@ const ProductDetail = () => {
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="h-8 w-8 text-yellow-600" />
+                  <Check className="h-8 w-8 text-blue-700" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Expert-Vetted Content
@@ -403,7 +403,7 @@ const ProductDetail = () => {
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-8 w-8 text-yellow-600" />
+                  <BookOpen className="h-8 w-8 text-blue-700" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Practical & Actionable
@@ -417,7 +417,7 @@ const ProductDetail = () => {
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="h-8 w-8 text-yellow-600" />
+                  <Award className="h-8 w-8 text-blue-700" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Interview-Ready

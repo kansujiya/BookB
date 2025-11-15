@@ -81,7 +81,7 @@ const Home = () => {
 
             {/* Hero Content */}
             <div className="order-1 lg:order-2">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600 mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700 mb-6">
                 {heroBook.title}
               </h1>
               
@@ -106,7 +106,7 @@ const Home = () => {
 
               <Button 
                 size="lg" 
-                className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-6 rounded-md transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold text-lg px-8 py-6 rounded-md transition-colors"
                 onClick={() => window.scrollTo({ top: document.getElementById('products')?.offsetTop - 100, behavior: 'smooth' })}
               >
                 GET STARTED
@@ -184,7 +184,7 @@ const Home = () => {
           
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -203,13 +203,13 @@ const Home = () => {
       {/* Testimonials Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700 mb-12">
             What Readers Say?
           </h2>
           
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
             </div>
           ) : (
             <>
@@ -230,7 +230,7 @@ const Home = () => {
           <div className="text-center mt-12">
             <Button 
               size="lg"
-              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-6 rounded-md transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold text-lg px-8 py-6 rounded-md transition-colors"
               onClick={() => window.scrollTo({ top: document.getElementById('products')?.offsetTop - 100, behavior: 'smooth' })}
             >
               Get Your Copy Now!
@@ -242,7 +242,7 @@ const Home = () => {
       {/* More Info Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700 mb-6">
             More about our business eBooks
           </h2>
           <p className="text-center text-gray-600 text-lg mb-12">
@@ -250,7 +250,7 @@ const Home = () => {
           </p>
           
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600 mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700 mb-6">
               Discover the Best Resources for Digital Transformation
             </h3>
             <p className="text-gray-700 leading-relaxed text-lg">

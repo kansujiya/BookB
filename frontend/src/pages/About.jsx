@@ -5,22 +5,22 @@ import { Card, CardContent } from '../components/ui/card';
 const About = () => {
   const features = [
     {
-      icon: <BookOpen className="h-12 w-12 text-yellow-600" />,
+      icon: <BookOpen className="h-12 w-12 text-blue-700" />,
       title: 'Expert Knowledge',
       description: 'Curated content from industry experts with decades of experience in software engineering and system design.'
     },
     {
-      icon: <Users className="h-12 w-12 text-yellow-600" />,
+      icon: <Users className="h-12 w-12 text-blue-700" />,
       title: 'Community Driven',
       description: 'Join thousands of software professionals who are advancing their careers with our comprehensive resources.'
     },
     {
-      icon: <Target className="h-12 w-12 text-yellow-600" />,
+      icon: <Target className="h-12 w-12 text-blue-700" />,
       title: 'Practical Focus',
       description: 'Real-world case studies and interview-focused examples that you can apply immediately in your work.'
     },
     {
-      icon: <Award className="h-12 w-12 text-yellow-600" />,
+      icon: <Award className="h-12 w-12 text-blue-700" />,
       title: 'Quality Assured',
       description: 'Every eBook is thoroughly reviewed and updated to reflect the latest industry standards and best practices.'
     }

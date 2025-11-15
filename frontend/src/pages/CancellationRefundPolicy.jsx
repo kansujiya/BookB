@@ -78,7 +78,7 @@ const CancellationRefundPolicy = () => {
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">
                 In case the if you have not able unzip the product, please contact us immediately. We will be happy to mail you the product to download. Please contact us on{' '}
-                <a href="mailto:sell@bookblaze.org" className="text-yellow-600 hover:text-yellow-700 underline">
+                <a href="mailto:sell@bookblaze.org" className="text-blue-700 hover:text-blue-800 underline">
                   sell@bookblaze.org
                 </a>{' '}
                 for the same.

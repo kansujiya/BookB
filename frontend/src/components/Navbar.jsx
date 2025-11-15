@@ -28,7 +28,7 @@ const Navbar = ({ cartCount = 0 }) => {
                 <div className="w-8 h-1.5 bg-red-600 rounded"></div>
               </div>
               <div className="flex space-x-1 mt-1">
-                <div className="w-8 h-1.5 bg-yellow-500 rounded"></div>
+                <div className="w-8 h-1.5 bg-blue-600 rounded"></div>
                 <div className="w-8 h-1.5 bg-green-600 rounded"></div>
               </div>
             </div>
@@ -43,8 +43,8 @@ const Navbar = ({ cartCount = 0 }) => {
                 to={link.path}
                 className={`text-base font-medium transition-colors ${
                   isActive(link.path)
-                    ? 'text-yellow-600'
-                    : 'text-gray-700 hover:text-yellow-600'
+                    ? 'text-blue-700'
+                    : 'text-gray-700 hover:text-blue-700'
                 }`}
               >
                 {link.name}
@@ -95,8 +95,8 @@ const Navbar = ({ cartCount = 0 }) => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(link.path)
-                    ? 'text-yellow-600 bg-yellow-50'
-                    : 'text-gray-700 hover:text-yellow-600 hover:bg-gray-50'
+                    ? 'text-blue-700 bg-blue-50'
+                    : 'text-gray-700 hover:text-blue-700 hover:bg-gray-50'
                 }`}
               >
                 {link.name}

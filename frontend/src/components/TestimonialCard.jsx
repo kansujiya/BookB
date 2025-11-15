@@ -19,7 +19,7 @@ const TestimonialCard = memo(({ testimonial }) => {
             <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-semibold text-yellow-600">{testimonial.name}</p>
+            <p className="font-semibold text-blue-700">{testimonial.name}</p>
             <p className="text-sm text-gray-600">{testimonial.position}</p>
           </div>
         </div>

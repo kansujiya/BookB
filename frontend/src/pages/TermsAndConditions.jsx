@@ -19,7 +19,7 @@ const TermsAndConditions = () => {
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6">
                 Welcome to BookBlaze! These terms and conditions outline the rules and regulations for using our website at{' '}
-                <a href="https://bookblaze.org" className="text-yellow-600 hover:text-yellow-700 underline">
+                <a href="https://bookblaze.org" className="text-blue-700 hover:text-blue-800 underline">
                   bookblaze.org
                 </a>
                 . By using the website, you agree to these provisions. If you do not agree, please discontinue use immediately.

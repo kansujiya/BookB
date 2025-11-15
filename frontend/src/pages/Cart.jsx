@@ -112,7 +112,7 @@ const Cart = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 py-16 flex justify-center items-center">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
       </div>
     );
   }
@@ -129,7 +129,7 @@ const Cart = () => {
             </p>
             <Button
               onClick={() => navigate('/products')}
-              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold"
+              className="bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold"
               size="lg"
             >
               Browse Products
@@ -168,7 +168,7 @@ const Cart = () => {
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
                         {item.title}
                       </h3>
-                      <p className="text-2xl font-bold text-yellow-600 mb-4">
+                      <p className="text-2xl font-bold text-blue-700 mb-4">
                         ₹{item.current_price}
                       </p>
 
@@ -236,14 +236,14 @@ const Cart = () => {
                   <div className="border-t pt-4">
                     <div className="flex justify-between text-xl font-bold text-gray-900">
                       <span>Total</span>
-                      <span className="text-yellow-600">₹{calculateSubtotal()}</span>
+                      <span className="text-blue-700">₹{calculateSubtotal()}</span>
                     </div>
                   </div>
                 </div>
 
                 <Button
                   onClick={handleCheckout}
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg py-6 transition-colors"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold text-lg py-6 transition-colors"
                 >
                   Proceed to Checkout
                   <ArrowRight className="ml-2 h-5 w-5" />

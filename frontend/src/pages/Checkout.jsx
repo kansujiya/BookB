@@ -238,7 +238,7 @@ const Checkout = () => {
           contact: formData.phone
         },
         theme: {
-          color: "#EAB308" // Yellow color matching the site theme
+          color: "#256975" // Yellow color matching the site theme
         },
         modal: {
           ondismiss: function() {
@@ -268,7 +268,7 @@ const Checkout = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 py-16 flex justify-center items-center">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
       </div>
     );
   }
@@ -284,7 +284,7 @@ const Checkout = () => {
               <p className="text-gray-600 mb-4">
                 Thank you for your purchase.
               </p>
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+              <div className="bg-blue-50 border border-yellow-200 rounded-lg p-4 mb-4">
                 <p className="text-gray-800 font-semibold">
                   The team will provide PDF access in the next 24 Hours to download.
                 </p>
@@ -294,7 +294,7 @@ const Checkout = () => {
               </p>
               <Button
                 onClick={() => navigate('/products')}
-                className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold"
+                className="mt-6 bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold"
               >
                 Continue Shopping
               </Button>
@@ -432,7 +432,7 @@ const Checkout = () => {
                   <div className="border-t pt-2">
                     <div className="flex justify-between text-xl font-bold text-gray-900">
                       <span>Total</span>
-                      <span className="text-yellow-600">₹{calculateSubtotal()}</span>
+                      <span className="text-blue-700">₹{calculateSubtotal()}</span>
                     </div>
                   </div>
                 </div>
@@ -440,7 +440,7 @@ const Checkout = () => {
                 <Button
                   onClick={handlePayment}
                   disabled={processing}
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg py-6 transition-colors"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold text-lg py-6 transition-colors"
                 >
                   {processing ? (
                     <>

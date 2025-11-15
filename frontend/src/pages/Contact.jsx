@@ -149,7 +149,7 @@ const Contact = () => {
                 
                 <Button 
                   type="submit"
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold transition-colors"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold transition-colors"
                   size="lg"
                 >
                   <Send className="mr-2 h-4 w-4" />
@@ -173,7 +173,7 @@ const Contact = () => {
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <div className="bg-yellow-100 p-3 rounded-lg">
-                          <div className="text-yellow-600">
+                          <div className="text-blue-700">
                             {info.icon}
                           </div>
                         </div>
@@ -184,7 +184,7 @@ const Contact = () => {
                           {info.link ? (
                             <a 
                               href={info.link}
-                              className="text-gray-600 hover:text-yellow-600 transition-colors"
+                              className="text-gray-600 hover:text-blue-700 transition-colors"
                             >
                               {info.content}
                             </a>

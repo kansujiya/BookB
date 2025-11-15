@@ -117,7 +117,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-yellow-500 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-800">
+        <div className="border-t border-blue-600 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-800">
           <p>© 2025, BookBlaze Digital Works. All rights reserved.</p>
           <p className="mt-2 md:mt-0">
             Design & Developed by <span className="font-semibold">BookBlaze Team</span>.

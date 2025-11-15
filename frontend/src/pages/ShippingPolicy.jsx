@@ -27,7 +27,7 @@ const ShippingPolicy = () => {
               
               <p className="text-gray-700 leading-relaxed">
                 For further assistance, please contact us at{' '}
-                <a href="mailto:sell@bookblaze.org" className="text-yellow-600 hover:text-yellow-700 underline">
+                <a href="mailto:sell@bookblaze.org" className="text-blue-700 hover:text-blue-800 underline">
                   sell@bookblaze.org
                 </a>
                 .

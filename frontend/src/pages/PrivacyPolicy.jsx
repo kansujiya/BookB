@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6">
                 BookBlaze respects your privacy. This policy describes how your personal information is collected, used, and shared when you visit or make a purchase from our site,{' '}
-                <a href="https://bookblaze.org" className="text-yellow-600 hover:text-yellow-700 underline">
+                <a href="https://bookblaze.org" className="text-blue-700 hover:text-blue-800 underline">
                   bookblaze.org
                 </a>
                 .
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
 
               <p className="text-gray-700 leading-relaxed">
                 If you have questions about our privacy practices or wish to make a complaint, please contact us at{' '}
-                <a href="mailto:sell@bookblaze.org" className="text-yellow-600 hover:text-yellow-700 underline">
+                <a href="mailto:sell@bookblaze.org" className="text-blue-700 hover:text-blue-800 underline">
                   sell@bookblaze.org
                 </a>
                 .

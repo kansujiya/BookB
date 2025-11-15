@@ -37,7 +37,7 @@ const ProductCard = memo(({ product, onAddToCart }) => {
           <span className="text-gray-400 line-through text-sm">
             ₹{product.original_price || product.originalPrice}
           </span>
-          <span className="text-2xl font-bold text-yellow-600">
+          <span className="text-2xl font-bold text-blue-700">
             ₹{product.current_price || product.currentPrice}
           </span>
         </div>
@@ -45,7 +45,7 @@ const ProductCard = memo(({ product, onAddToCart }) => {
       <CardFooter className="p-6 pt-0">
         <Button
           onClick={handleAddToCart}
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold transition-colors"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900 font-semibold transition-colors"
         >
           <ShoppingCart className="mr-2 h-4 w-4" />
           Add to Cart
