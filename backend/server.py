@@ -21,6 +21,7 @@ from models import (
     Testimonial,
     RazorpayOrderCreate, PaymentVerification
 )
+from email_service import send_order_confirmation_email
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
