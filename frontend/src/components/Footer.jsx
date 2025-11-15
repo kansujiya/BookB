@@ -9,18 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Logo and Description */}
           <div className="md:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="flex flex-col">
-                <div className="flex space-x-1">
-                  <div className="w-8 h-1.5 bg-blue-600 rounded"></div>
-                  <div className="w-8 h-1.5 bg-red-600 rounded"></div>
-                </div>
-                <div className="flex space-x-1 mt-1">
-                  <div className="w-8 h-1.5 bg-white rounded"></div>
-                  <div className="w-8 h-1.5 bg-green-600 rounded"></div>
-                </div>
-              </div>
-              <span className="text-2xl font-bold text-gray-900">BookBlaze</span>
+            <div className="mb-4">
+              <img src="/logo.svg" alt="BookBlaze" className="h-12" />
             </div>
             <p className="text-gray-800 text-sm mb-4">
               A space to offer industry focused IT resources to help clients and professionals acquire necessary knowhow on digital transformation using our technical expertise.
