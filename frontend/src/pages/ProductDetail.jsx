@@ -255,20 +255,6 @@ const ProductDetail = () => {
                 </Button>
               </div>
 
-              {/* Guarantee */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <div className="flex items-start space-x-3">
-                  <Check className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold text-gray-900 mb-1">
-                      7-Day Money-Back Guarantee
-                    </p>
-                    <p className="text-gray-600 text-sm">
-                      Not satisfied? Get a full refund within 7 days. No questions asked!
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
