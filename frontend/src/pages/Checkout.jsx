@@ -136,10 +136,7 @@ const Checkout = () => {
     setProcessing(true);
 
     try {
-      // Mock payment delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Create order with billing details
+      // Step 1: Create order in our database
       const sessionId = getSessionId();
       const orderData = {
         session_id: sessionId,
@@ -152,7 +149,7 @@ const Checkout = () => {
         pincode: ""
       };
 
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/orders`, {
+      const orderResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -160,17 +157,102 @@ const Checkout = () => {
         body: JSON.stringify(orderData)
       });
 
-      if (!response.ok) {
+      if (!orderResponse.ok) {
         throw new Error('Failed to create order');
       }
 
-      const order = await response.json();
+      const order = await orderResponse.json();
+      const totalAmount = calculateSubtotal();
 
-      // Show success
-      setPaymentSuccess(true);
-      
-      // Trigger cart count update
-      window.dispatchEvent(new Event('cartUpdated'));
+      // Step 2: Create Razorpay order
+      const razorpayOrderResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/razorpay/create-order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: totalAmount * 100, // Convert to paise
+          currency: "INR",
+          receipt: order.order_number,
+          notes: {
+            order_number: order.order_number,
+            customer_email: formData.email
+          }
+        })
+      });
+
+      if (!razorpayOrderResponse.ok) {
+        throw new Error('Failed to create Razorpay order');
+      }
+
+      const razorpayOrder = await razorpayOrderResponse.json();
+
+      // Step 3: Open Razorpay checkout
+      const options = {
+        key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+        amount: razorpayOrder.amount,
+        currency: razorpayOrder.currency,
+        name: "BookBlaze",
+        description: "eBook Purchase",
+        order_id: razorpayOrder.id,
+        handler: async function (response) {
+          try {
+            // Step 4: Verify payment on backend
+            const verifyResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/razorpay/verify-payment`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                order_number: order.order_number
+              })
+            });
+
+            if (!verifyResponse.ok) {
+              throw new Error('Payment verification failed');
+            }
+
+            // Step 5: Clear cart and show success
+            await cartAPI.clearCart(sessionId);
+            window.dispatchEvent(new Event('cartUpdated'));
+            
+            setPaymentSuccess(true);
+            setProcessing(false);
+
+          } catch (verifyError) {
+            console.error('Payment verification error:', verifyError);
+            toast({
+              title: "Payment Verification Failed",
+              description: "Payment was made but verification failed. Please contact support.",
+              variant: "destructive",
+            });
+            setProcessing(false);
+          }
+        },
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone
+        },
+        theme: {
+          color: "#EAB308" // Yellow color matching the site theme
+        },
+        modal: {
+          ondismiss: function() {
+            setProcessing(false);
+            toast({
+              title: "Payment Cancelled",
+              description: "You cancelled the payment process.",
+            });
+          }
+        }
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
 
     } catch (error) {
       console.error('Payment error:', error);
