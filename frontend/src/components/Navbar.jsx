@@ -21,18 +21,8 @@ const Navbar = ({ cartCount = 0 }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="flex flex-col">
-              <div className="flex space-x-1">
-                <div className="w-8 h-1.5 bg-blue-600 rounded"></div>
-                <div className="w-8 h-1.5 bg-red-600 rounded"></div>
-              </div>
-              <div className="flex space-x-1 mt-1">
-                <div className="w-8 h-1.5 bg-blue-600 rounded"></div>
-                <div className="w-8 h-1.5 bg-green-600 rounded"></div>
-              </div>
-            </div>
-            <span className="text-2xl font-bold text-gray-900">BookBlaze</span>
+          <Link to="/" className="flex items-center">
+            <img src="/logo.svg" alt="BookBlaze" className="h-10" />
           </Link>
 
           {/* Desktop Navigation */}
