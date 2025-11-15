@@ -13,6 +13,7 @@ class ProductBase(BaseModel):
     description: str
     long_description: str
     features: List[str]
+    download_link: str = ""  # Google Drive link for PDF download
 
 class ProductCreate(ProductBase):
     pass
@@ -21,6 +22,23 @@ class Product(ProductBase):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+    class Config:
+        from_attributes = True
+
+# Public Product Model (without download_link for public APIs)
+class ProductPublic(BaseModel):
+    id: str
+    title: str
+    slug: str
+    image: str
+    original_price: int
+    current_price: int
+    description: str
+    long_description: str
+    features: List[str]
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         from_attributes = True
