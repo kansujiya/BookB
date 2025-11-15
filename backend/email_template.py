@@ -186,10 +186,10 @@ Hi {customer_name},</p>
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 	<tr>
-		<td class="email-additional-content" style='color: #256975; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 32px 0 0; background-color: #FEF9C3; padding: 24px; border-radius: 8px;'>
-			<p style="text-align: center; margin: 0 0 16px; font-weight: bold; font-size: 18px; color: #854D0E;" align="center">📥 Download Access</p>
-			<p style="text-align: center; margin: 0 0 16px; color: #713F12;" align="center"><strong>The team will provide PDF access in the next 24 Hours to download.</strong></p>
-			<p style="text-align: center; margin: 0 0 0px; color: #713F12;" align="center">You can download your purchased items using the links provided above in the order summary.</p>
+		<td class="email-additional-content" style='color: #256975; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 32px 0 0; background-color: #E0F2F7; padding: 24px; border-radius: 8px;'>
+			<p style="text-align: center; margin: 0 0 16px; font-weight: bold; font-size: 18px; #256975;" align="center">📥 Download Access</p>
+			<p style="text-align: center; margin: 0 0 16px; #1e4a54;" align="center"><strong>The team will provide PDF access in the next 24 Hours to download.</strong></p>
+			<p style="text-align: center; margin: 0 0 0px; #1e4a54;" align="center">You can download your purchased items using the links provided above in the order summary.</p>
 		</td>
 	</tr>
 </table>
