@@ -23,7 +23,7 @@ def get_order_email_html(order_data):
             download_button = f'''
             <tr>
                 <td colspan="3" class="font-family text-align-left" style='font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; text-align: left; padding: 8px 12px; padding-left: 0; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: middle;' align="left">
-                    <p style="margin: 0 0 8px;">📥 <a href="{download_link}" target="_blank" style="color: #EAB308; font-weight: bold; text-decoration: underline;">Download PDF</a></p>
+                    <p style="margin: 0 0 8px;">📥 <a href="{download_link}" target="_blank" style="color: #256975; font-weight: bold; text-decoration: underline;">Download PDF</a></p>
                 </td>
             </tr>
             '''
@@ -31,7 +31,7 @@ def get_order_email_html(order_data):
         items_html += f"""
         <tr class="order_item">
             <td class="td font-family text-align-left" style='color: #414141; border: 0; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; text-align: left; padding: 8px 12px; padding-left: 0; vertical-align: middle; word-wrap: break-word;' align="left">
-                <table class="order-item-data" style='color: #111; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;'>
+                <table class="order-item-data" style='color: #256975; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;'>
                     <tr>
                         <td style="vertical-align: middle; padding-right: 0; padding-bottom: 24px; border: 0; padding: 0;">
                             {item['product_title']}
@@ -58,8 +58,8 @@ def get_order_email_html(order_data):
             <td style="padding: 10px; width: 33.33%; vertical-align: top;" width="33.33%">
                 <a href="https://www.bookblaze.org" style="text-decoration: none; display: block;">
                     <img src="{product['image']}" alt="{product['title']}" style="width: 100%; max-width: 150px; height: auto; border-radius: 8px; margin-bottom: 8px;">
-                    <p style="color: #111; font-size: 14px; font-weight: bold; margin: 0 0 4px; line-height: 1.3;">{product['title']}</p>
-                    <p style="color: #EAB308; font-size: 16px; font-weight: bold; margin: 0;">₹{product['current_price']}</p>
+                    <p style="color: #256975; font-size: 14px; font-weight: bold; margin: 0 0 4px; line-height: 1.3;">{product['title']}</p>
+                    <p style="color: #256975; font-size: 16px; font-weight: bold; margin: 0;">₹{product['current_price']}</p>
                 </a>
             </td>
             """
@@ -68,8 +68,8 @@ def get_order_email_html(order_data):
         <br>
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-                <td style='color: #111; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 24px 0 16px;'>
-                    <h2 style="text-align: center; font-size: 24px; font-weight: bold; margin: 0 0 16px; color: #111;">Explore More Books</h2>
+                <td style='color: #256975; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 24px 0 16px;'>
+                    <h2 style="text-align: center; font-size: 24px; font-weight: bold; margin: 0 0 16px; color: #256975;">Explore More Books</h2>
                     <p style="text-align: center; margin: 0 0 16px; color: #666;">Check out these other amazing resources:</p>
                 </td>
             </tr>
@@ -105,10 +105,10 @@ def get_order_email_html(order_data):
 										<tr>
 											<td align="center" valign="top">
 												<!-- Header -->
-												<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" style='background-color: #fff; color: #111; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; border-radius: 3px 3px 0 0;' bgcolor="#fff">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" style='background-color: #fff; color: #256975; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; border-radius: 3px 3px 0 0;' bgcolor="#fff">
 													<tr>
 														<td id="header_wrapper" style="padding: 32px 32px 20px; display: block;">
-															<h1 style='font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 120%; margin: 0; color: #111; background-color: inherit; text-align: left;' bgcolor="inherit">Good things are heading your way!</h1>
+															<h1 style='font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 120%; margin: 0; color: #256975; background-color: inherit; text-align: left;' bgcolor="inherit">Good things are heading your way!</h1>
 														</td>
 													</tr>
 												</table>
@@ -133,8 +133,8 @@ Hi {customer_name},</p>
 	<p style="margin: 0 0 16px;">Here's a summary of what you've ordered:</p>
 </div>
 
-<h2 class="email-order-detail-heading" style='color: #111; display: block; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; font-size: 20px; font-weight: bold; line-height: 160%; margin: 0 0 18px; text-align: left;'>
-	Order Summary<br><span style="color: #111; display: block; font-size: 14px; font-weight: normal;">Order #{order_number} ({order_date})</span></h2>
+<h2 class="email-order-detail-heading" style='color: #256975; display: block; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; font-size: 20px; font-weight: bold; line-height: 160%; margin: 0 0 18px; text-align: left;'>
+	Order Summary<br><span style="color: #256975; display: block; font-size: 14px; font-weight: normal;">Order #{order_number} ({order_date})</span></h2>
 
 <div style="margin-bottom: 24px;">
 	<table class="td font-family email-order-details" cellspacing="0" cellpadding="6" border="0" style='color: #414141; border: 0; vertical-align: middle; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; width: 100%;' width="100%">
@@ -173,11 +173,11 @@ Hi {customer_name},</p>
 <table id="addresses" cellspacing="0" cellpadding="0" border="0" style="width: 100%; vertical-align: top; margin-bottom: 0; padding: 0;" width="100%">
 	<tr>
 		<td class="font-family text-align-left" valign="top" width="50%" style='font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; text-align: left; border: 0; padding: 0;' align="left">
-			<b class="address-title" style='color: #111; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;'>Customer Details</b>
-			<address class="address" style="color: #111; font-style: normal; padding: 8px 0; word-break: break-all;">
+			<b class="address-title" style='color: #256975; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;'>Customer Details</b>
+			<address class="address" style="color: #256975; font-style: normal; padding: 8px 0; word-break: break-all;">
 				{customer_name}<br>
 				{city}<br>
-				<a href="tel:{customer_phone}" style="color: #EAB308; font-weight: normal; text-decoration: underline;">{customer_phone}</a><br>
+				<a href="tel:{customer_phone}" style="color: #256975; font-weight: normal; text-decoration: underline;">{customer_phone}</a><br>
 				{customer_email}
 			</address>
 		</td>
@@ -186,7 +186,7 @@ Hi {customer_name},</p>
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 	<tr>
-		<td class="email-additional-content" style='color: #111; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 32px 0 0; background-color: #FEF9C3; padding: 24px; border-radius: 8px;'>
+		<td class="email-additional-content" style='color: #256975; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 32px 0 0; background-color: #FEF9C3; padding: 24px; border-radius: 8px;'>
 			<p style="text-align: center; margin: 0 0 16px; font-weight: bold; font-size: 18px; color: #854D0E;" align="center">📥 Download Access</p>
 			<p style="text-align: center; margin: 0 0 16px; color: #713F12;" align="center"><strong>The team will provide PDF access in the next 24 Hours to download.</strong></p>
 			<p style="text-align: center; margin: 0 0 0px; color: #713F12;" align="center">You can download your purchased items using the links provided above in the order summary.</p>
@@ -197,8 +197,8 @@ Hi {customer_name},</p>
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 	<tr>
-		<td class="email-additional-content" style='color: #111; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 32px 0 0;'>
-			<p style="text-align: center; margin: 0 0 16px;" align="center">If you have any questions or face any issues, please don't hesitate to contact us at <a href="mailto:sell@bookblaze.org" style="color: #EAB308; font-weight: normal; text-decoration: underline;">sell@bookblaze.org</a></p>
+		<td class="email-additional-content" style='color: #256975; font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; padding: 32px 0 0;'>
+			<p style="text-align: center; margin: 0 0 16px;" align="center">If you have any questions or face any issues, please don't hesitate to contact us at <a href="mailto:sell@bookblaze.org" style="color: #256975; font-weight: normal; text-decoration: underline;">sell@bookblaze.org</a></p>
 			<p style="text-align: center; margin: 0 0 16px;" align="center">Thank you for choosing BookBlaze!</p>
 			<p style="text-align: center; margin: 0 0 16px;" align="center">Sincerely,<br>
 			<strong>BookBlaze Team</strong></p>
@@ -227,7 +227,7 @@ Hi {customer_name},</p>
 											<td valign="top" style="padding: 0; border-radius: 0;">
 												<table border="0" cellpadding="10" cellspacing="0" width="100%">
 													<tr>
-														<td colspan="2" valign="middle" id="credit" style='border-radius: 0; border: 0; border-top: 1px solid rgba(0,0,0,.2); font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; font-size: 12px; line-height: 140%; text-align: center; padding: 32px; color: #111;' align="center">
+														<td colspan="2" valign="middle" id="credit" style='border-radius: 0; border: 0; border-top: 1px solid rgba(0,0,0,.2); font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; font-size: 12px; line-height: 140%; text-align: center; padding: 32px; color: #256975;' align="center">
 															<p style="margin: 0;">© 2025, BookBlaze. All rights reserved.</p>
 														</td>
 													</tr>
