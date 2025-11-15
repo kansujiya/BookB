@@ -1,0 +1,23 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book Icon -->
+  <rect x="5" y="15" width="30" height="35" rx="2" fill="#256975" opacity="0.2"/>
+  <path d="M10 20 L10 45 L30 45 L30 20 L20 15 L10 20 Z" fill="#256975"/>
+  <line x1="20" y1="15" x2="20" y2="45" stroke="white" stroke-width="1.5" opacity="0.5"/>
+  <line x1="15" y1="28" x2="25" y2="28" stroke="white" stroke-width="1" opacity="0.7"/>
+  <line x1="15" y1="33" x2="25" y2="33" stroke="white" stroke-width="1" opacity="0.7"/>
+  <line x1="15" y1="38" x2="25" y2="38" stroke="white" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Flame/Blaze Element -->
+  <path d="M25 12 Q30 8 32 12 Q34 16 32 20 Q30 24 25 22 Q22 20 23 16 Q24 12 25 12 Z" fill="#FF6B35" opacity="0.8"/>
+  <path d="M26 14 Q28 12 29 14 Q30 16 29 18 Q28 20 26 19 Q24 18 25 16 Q26 14 26 14 Z" fill="#FFA500" opacity="0.9"/>
+  
+  <!-- Text: BookBlaze -->
+  <text x="45" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#256975">
+    Book<tspan fill="#1e4a54">Blaze</tspan>
+  </text>
+  
+  <!-- Tagline -->
+  <text x="45" y="50" font-family="Arial, sans-serif" font-size="8" fill="#666">
+    Digital Resources for Tech Professionals
+  </text>
+</svg>
