@@ -350,8 +350,7 @@ async def create_order(order_create: OrderCreate):
         
         await db.orders.insert_one(order.dict())
         
-        # Clear cart
-        await db.carts.delete_one({"session_id": order_create.session_id})
+        # Don't clear cart yet - will be cleared after successful payment
         
         return order
     except HTTPException:
