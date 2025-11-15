@@ -290,9 +290,35 @@ async def verify_payment(payment_data: PaymentVerification):
             }
         )
         
-        # Clear cart after successful payment
-        # Find the session_id from the order (we need to get it from OrderCreate, so we'll pass it)
-        # For now, we'll return success and let frontend handle cart clearing
+        # Get updated order for email
+        updated_order = await db.orders.find_one({"order_number": payment_data.order_number})
+        
+        # Send order confirmation email
+        try:
+            # Format date for email
+            created_at = updated_order['created_at']
+            if isinstance(created_at, datetime):
+                formatted_date = created_at.strftime("%B %d, %Y")
+            else:
+                formatted_date = str(created_at)
+            
+            email_data = {
+                'customer_name': updated_order['customer_name'],
+                'customer_email': updated_order['customer_email'],
+                'customer_phone': updated_order['customer_phone'],
+                'city': updated_order['city'],
+                'order_number': updated_order['order_number'],
+                'created_at': formatted_date,
+                'items': updated_order['items'],
+                'subtotal': updated_order['subtotal'],
+                'total': updated_order['total']
+            }
+            
+            await send_order_confirmation_email(email_data)
+            logger.info(f"Order confirmation email sent for order: {payment_data.order_number}")
+        except Exception as email_error:
+            # Log error but don't fail the payment verification
+            logger.error(f"Failed to send order confirmation email: {str(email_error)}")
         
         logger.info(f"Payment verified for order: {payment_data.order_number}")
         return {"status": "success", "message": "Payment verified successfully"}
