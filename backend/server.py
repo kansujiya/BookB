@@ -14,7 +14,7 @@ import hmac
 import hashlib
 
 from models import (
-    Product, ProductCreate,
+    Product, ProductCreate, ProductPublic,
     Cart, CartItemAdd, CartItemUpdate,
     Order, OrderCreate, OrderItem,
     ContactMessage, ContactMessageCreate,
