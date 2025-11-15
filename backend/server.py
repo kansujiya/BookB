@@ -344,8 +344,8 @@ async def create_order(order_create: OrderCreate):
             subtotal=subtotal,
             discount=discount,
             total=subtotal,
-            status="completed",
-            payment_status="paid"
+            status="pending",
+            payment_status="pending"
         )
         
         await db.orders.insert_one(order.dict())
