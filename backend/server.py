@@ -79,9 +79,9 @@ async def get_product_by_slug(slug: str):
         logger.error(f"Error fetching product: {str(e)}")
         raise HTTPException(status_code=500, detail="Error fetching product")
 
-@api_router.post("/products", response_model=Product)
+@api_router.post("/products", response_model=ProductPublic)
 async def create_product(product: ProductCreate):
-    """Create a new product"""
+    """Create a new product (admin endpoint - returns without download links)"""
     try:
         # Check if slug already exists
         existing = await db.products.find_one({"slug": product.slug})
@@ -90,7 +90,10 @@ async def create_product(product: ProductCreate):
         
         product_obj = Product(**product.dict())
         await db.products.insert_one(product_obj.dict())
-        return product_obj
+        
+        # Return product without sensitive fields
+        product_dict = product_obj.dict()
+        return ProductPublic(**{k: v for k, v in product_dict.items() if k not in ['download_link', 'pdf_link']})
     except HTTPException:
         raise
     except Exception as e:
