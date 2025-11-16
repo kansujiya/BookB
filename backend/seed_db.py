@@ -30,7 +30,9 @@ products_data = [
             "Scalability Best Practices",
             "Real-World Case Studies",
             "150+ Visual Diagrams"
-        ]
+        ],
+        "download_link": "https://drive.google.com/file/d/1pTAipI93r6nmWDdKxL_3dFuQMpTwEiO5/view?usp=drive_link",
+        "pdf_link": "https://drive.google.com/file/d/1pTAipI93r6nmWDdKxL_3dFuQMpTwEiO5/view?usp=drive_link"
     },
     {
         "id": "prod-2",
@@ -48,7 +50,9 @@ products_data = [
             "Scalability Principles",
             "Database & Caching Strategies",
             "API Design Best Practices"
-        ]
+        ],
+        "download_link": "https://drive.google.com/file/d/1pTAipI93r6nmWDdKxL_3dFuQMpTwEiO5/view?usp=drive_link",
+        "pdf_link": "https://drive.google.com/file/d/1pTAipI93r6nmWDdKxL_3dFuQMpTwEiO5/view?usp=drive_link"
     },
     {
         "id": "prod-3",
@@ -66,7 +70,9 @@ products_data = [
             "Space-Based Architecture",
             "Service-Oriented Architecture (SOA)",
             "Trade-off Analysis & Decision Making"
-        ]
+        ],
+        "download_link": "https://drive.google.com/file/d/1pTAipI93r6nmWDdKxL_3dFuQMpTwEiO5/view?usp=drive_link",
+        "pdf_link": "https://drive.google.com/file/d/1pTAipI93r6nmWDdKxL_3dFuQMpTwEiO5/view?usp=drive_link"
     }
 ]
 
