@@ -316,7 +316,8 @@ async def verify_payment(payment_data: PaymentVerification):
                         'product_title': item['product_title'],
                         'quantity': item['quantity'],
                         'price': item['price'],
-                        'download_link': product.get('download_link', '')
+                        'download_link': product.get('download_link', ''),
+                        'pdf_link': product.get('pdf_link', '')
                     })
             
             # Fetch other products for recommendations (exclude purchased ones)
