@@ -14,6 +14,7 @@ class ProductBase(BaseModel):
     long_description: str
     features: List[str]
     download_link: str = ""  # Google Drive link for PDF download
+    pdf_link: str = ""  # Direct PDF download link
 
 class ProductCreate(ProductBase):
     pass
