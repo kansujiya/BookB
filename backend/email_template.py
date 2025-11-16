@@ -17,13 +17,14 @@ def get_order_email_html(order_data):
     # Generate order items HTML with download links
     items_html = ""
     for item in items_with_links:
-        download_link = item.get('download_link', '')
+        # Use pdf_link if available, otherwise fall back to download_link
+        pdf_link = item.get('pdf_link', '') or item.get('download_link', '')
         download_button = ""
-        if download_link:
+        if pdf_link:
             download_button = f'''
             <tr>
                 <td colspan="3" class="font-family text-align-left" style='font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; text-align: left; padding: 8px 12px; padding-left: 0; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: middle;' align="left">
-                    <p style="margin: 0 0 8px;">📥 <a href="{download_link}" target="_blank" style="color: #256975; font-weight: bold; text-decoration: underline;">Download PDF</a></p>
+                    <p style="margin: 0 0 8px;">📥 <a href="{pdf_link}" target="_blank" style="color: #256975; font-weight: bold; text-decoration: underline;">Download PDF</a></p>
                 </td>
             </tr>
             '''
