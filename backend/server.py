@@ -58,21 +58,21 @@ async def get_products():
     """Get all products (without download links)"""
     try:
         products = await db.products.find().to_list(1000)
-        # Return products without download_link field
-        return [ProductPublic(**{k: v for k, v in product.items() if k != 'download_link'}) for product in products]
+        # Return products without download_link and pdf_link fields
+        return [ProductPublic(**{k: v for k, v in product.items() if k not in ['download_link', 'pdf_link']}) for product in products]
     except Exception as e:
         logger.error(f"Error fetching products: {str(e)}")
         raise HTTPException(status_code=500, detail="Error fetching products")
 
 @api_router.get("/products/{slug}", response_model=ProductPublic)
 async def get_product_by_slug(slug: str):
-    """Get a single product by slug (without download link)"""
+    """Get a single product by slug (without download links)"""
     try:
         product = await db.products.find_one({"slug": slug})
         if not product:
             raise HTTPException(status_code=404, detail="Product not found")
-        # Return product without download_link field
-        return ProductPublic(**{k: v for k, v in product.items() if k != 'download_link'})
+        # Return product without download_link and pdf_link fields
+        return ProductPublic(**{k: v for k, v in product.items() if k not in ['download_link', 'pdf_link']})
     except HTTPException:
         raise
     except Exception as e:
