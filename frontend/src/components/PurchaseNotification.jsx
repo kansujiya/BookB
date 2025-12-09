@@ -84,8 +84,8 @@ const PurchaseNotification = () => {
         setIsVisible(false);
       }, 5000);
 
-      // Schedule next notification with random time between 30 seconds to 3 minutes
-      const randomDelay = Math.random() * 150000 + 30000; // 30000ms to 180000ms (30s to 3min)
+      // Schedule next notification with random time between 1 minute to 20 minutes
+      const randomDelay = Math.random() * 1140000 + 60000; // 60000ms to 1200000ms (1min to 20min)
       timeoutId = setTimeout(() => {
         showNotification();
       }, randomDelay);
