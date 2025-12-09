@@ -456,10 +456,25 @@ async def get_orders_by_email(email: str):
 
 @api_router.post("/contact")
 async def submit_contact_message(message: ContactMessageCreate):
-    """Submit contact form"""
+    """Submit contact form and send email notification"""
     try:
         contact_msg = ContactMessage(**message.dict())
         await db.contact_messages.insert_one(contact_msg.dict())
+        
+        # Send email notification to sell@bookblaze.org
+        try:
+            contact_data = {
+                'name': message.name,
+                'email': message.email,
+                'message': message.message,
+                'created_at': contact_msg.created_at.strftime("%B %d, %Y at %I:%M %p") if hasattr(contact_msg.created_at, 'strftime') else str(contact_msg.created_at)
+            }
+            await send_contact_form_email(contact_data)
+            logger.info(f"Contact form email sent for {message.email}")
+        except Exception as email_error:
+            # Log error but don't fail the request
+            logger.error(f"Failed to send contact form email: {str(email_error)}")
+        
         return {"message": "Contact message received successfully"}
     except Exception as e:
         logger.error(f"Error submitting contact message: {str(e)}")
