@@ -220,14 +220,14 @@ const Contact = () => {
                       Our eBooks are available in PDF format, compatible with all devices.
                     </p>
                   </div>
-                  <div>
+                  {/* <div>
                     <h4 className="font-semibold text-gray-900 mb-2">
                       Do you offer refunds?
                     </h4>
                     <p className="text-gray-600">
                       Yes, we offer a 30-day money-back guarantee if you're not satisfied with your purchase.
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

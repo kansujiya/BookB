@@ -20,7 +20,7 @@ products_data = [
         "slug": "foundations-of-software-design-volume-2",
         "image": "https://digital.marksense.in/wp-content/uploads/2025/06/foundations_of_software_design_vol_2.webp",
         "original_price": 1499,
-        "current_price": 499,
+        "current_price": 9,
         "description": "Advanced concepts in software architecture and design patterns for modern applications.",
         "long_description": "Dive deep into advanced software architecture concepts, design patterns, and best practices. This comprehensive guide covers microservices, event-driven architecture, scalability patterns, and real-world case studies from leading tech companies.",
         "features": [
@@ -40,7 +40,7 @@ products_data = [
         "slug": "software-system-design",
         "image": "https://digital.marksense.in/wp-content/uploads/2025/06/software_system_design_cover_photo.webp",
         "original_price": 1499,
-        "current_price": 499,
+        "current_price": 9,
         "description": "Master system design fundamentals to advanced concepts with real-world case studies.",
         "long_description": "Used by 1000+ engineers featuring 100+ visuals to master real-world concepts. Learn how to design software like a pro with practical examples from Uber, Facebook Messenger, Zoom, Swiggy, Instagram, Slack, and Dropbox.",
         "features": [
@@ -60,7 +60,7 @@ products_data = [
         "slug": "software-architecture-patterns",
         "image": "https://digital.marksense.in/wp-content/uploads/2025/04/sap_cover_photo.png.webp",
         "original_price": 1499,
-        "current_price": 499,
+        "current_price": 9,
         "description": "Comprehensive guide to architectural patterns and best practices in software development.",
         "long_description": "Master essential software architecture patterns including Layered, Event-Driven, Microservices, Space-Based, and Service-Oriented Architecture. Learn when to use each pattern and understand trade-offs for building robust, scalable systems.",
         "features": [

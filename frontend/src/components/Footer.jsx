@@ -20,10 +20,22 @@ const Footer = () => {
               <span className="text-sm">sell@bookblaze.org</span>
             </div>
             <div className="flex space-x-3 mt-4">
-              <a href="#" className="bg-white p-2 rounded hover:bg-gray-100 transition-colors">
+              <a
+                href="https://www.instagram.com/bookblazeorg/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="BookBlaze on Instagram"
+                className="bg-white p-2 rounded hover:bg-gray-100 transition-colors"
+              >
                 <Instagram className="h-5 w-5 text-gray-800" />
               </a>
-              <a href="#" className="bg-white p-2 rounded hover:bg-gray-100 transition-colors">
+              <a
+                href="https://www.facebook.com/profile.php?id=61583510112948"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="BookBlaze on Facebook"
+                className="bg-white p-2 rounded hover:bg-gray-100 transition-colors"
+              >
                 <Facebook className="h-5 w-5 text-gray-800" />
               </a>
             </div>
