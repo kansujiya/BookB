@@ -16,6 +16,8 @@ const ProductDetail = () => {
   const [selectedTab, setSelectedTab] = useState('overview');
 
   useEffect(() => {
+    // Scroll to top when component mounts or slug changes
+    window.scrollTo(0, 0);
     fetchProduct();
   }, [slug]);
 
