@@ -34,6 +34,11 @@ const PurchaseNotification = () => {
   }, []);
 
   useEffect(() => {
+    // Don't show notifications if still loading or no purchases
+    if (loading || recentPurchases.length === 0) {
+      return;
+    }
+
     let timeoutId;
 
     const getUniquePurchase = () => {
@@ -67,8 +72,14 @@ const PurchaseNotification = () => {
         setIsVisible(false);
       }, 5000);
 
-      // Schedule next notification with random time between 1 minute to 20 minutes
-      const randomDelay = Math.random() * 1140000 + 60000; // 60000ms to 1200000ms (1min to 20min)
+      // Generate truly random delay between 1 minute (60000ms) to 20 minutes (1200000ms)
+      // Using Math.floor to ensure integer milliseconds
+      const minDelay = 60000;  // 1 minute
+      const maxDelay = 1200000;  // 20 minutes
+      const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+      
+      console.log(`Next notification in ${Math.floor(randomDelay / 60000)} minutes and ${Math.floor((randomDelay % 60000) / 1000)} seconds`);
+      
       timeoutId = setTimeout(() => {
         showNotification();
       }, randomDelay);
@@ -83,7 +94,7 @@ const PurchaseNotification = () => {
       clearTimeout(initialTimeout);
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [usedIndices]);
+  }, [usedIndices, recentPurchases, loading]);
 
   if (!isVisible || !currentPurchase) return null;
 
