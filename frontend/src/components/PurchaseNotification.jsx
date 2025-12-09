@@ -85,10 +85,13 @@ const PurchaseNotification = () => {
       }, randomDelay);
     };
 
-    // Show first notification after 8 seconds
+    // Show first notification after 1-5 minutes (random)
+    const firstDelay = Math.floor(Math.random() * 240000) + 60000; // 1-5 minutes
+    console.log(`First notification will appear in ${Math.floor(firstDelay / 60000)} minutes and ${Math.floor((firstDelay % 60000) / 1000)} seconds`);
+    
     const initialTimeout = setTimeout(() => {
       showNotification();
-    }, 8000);
+    }, firstDelay);
 
     return () => {
       clearTimeout(initialTimeout);
