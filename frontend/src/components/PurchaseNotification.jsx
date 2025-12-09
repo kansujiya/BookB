@@ -5,50 +5,33 @@ const PurchaseNotification = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentPurchase, setCurrentPurchase] = useState(null);
   const [usedIndices, setUsedIndices] = useState([]);
+  const [recentPurchases, setRecentPurchases] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // 40 Recent purchases data with diverse names and locations
-  const recentPurchases = [
-    { customerName: 'Rajesh K.', productName: 'Software System Design', timeAgo: '2 minutes ago', location: 'Mumbai, India' },
-    { customerName: 'Priya S.', productName: 'Software Architecture Patterns', timeAgo: '5 minutes ago', location: 'Bangalore, India' },
-    { customerName: 'Amit P.', productName: 'Foundations of Software Design Volume 2', timeAgo: '8 minutes ago', location: 'Delhi, India' },
-    { customerName: 'Sneha M.', productName: 'Software System Design', timeAgo: '12 minutes ago', location: 'Pune, India' },
-    { customerName: 'Vikram R.', productName: 'Software Architecture Patterns', timeAgo: '15 minutes ago', location: 'Hyderabad, India' },
-    { customerName: 'Anita D.', productName: 'Foundations of Software Design Volume 2', timeAgo: '18 minutes ago', location: 'Chennai, India' },
-    { customerName: 'Karthik V.', productName: 'Software System Design', timeAgo: '22 minutes ago', location: 'Coimbatore, India' },
-    { customerName: 'Divya N.', productName: 'Software Architecture Patterns', timeAgo: '25 minutes ago', location: 'Ahmedabad, India' },
-    { customerName: 'Rohan B.', productName: 'Software System Design', timeAgo: '30 minutes ago', location: 'Kolkata, India' },
-    { customerName: 'Kavya L.', productName: 'Foundations of Software Design Volume 2', timeAgo: '35 minutes ago', location: 'Jaipur, India' },
-    { customerName: 'Aditya G.', productName: 'Software Architecture Patterns', timeAgo: '40 minutes ago', location: 'Noida, India' },
-    { customerName: 'Meera J.', productName: 'Software System Design', timeAgo: '45 minutes ago', location: 'Lucknow, India' },
-    { customerName: 'Sanjay T.', productName: 'Foundations of Software Design Volume 2', timeAgo: '48 minutes ago', location: 'Surat, India' },
-    { customerName: 'Pooja W.', productName: 'Software Architecture Patterns', timeAgo: '52 minutes ago', location: 'Indore, India' },
-    { customerName: 'Arjun M.', productName: 'Software System Design', timeAgo: '1 hour ago', location: 'Chandigarh, India' },
-    { customerName: 'Ritika S.', productName: 'Software Architecture Patterns', timeAgo: '1 hour ago', location: 'Nagpur, India' },
-    { customerName: 'Nikhil A.', productName: 'Foundations of Software Design Volume 2', timeAgo: '1 hour ago', location: 'Bhopal, India' },
-    { customerName: 'Ishita R.', productName: 'Software System Design', timeAgo: '1 hour ago', location: 'Vadodara, India' },
-    { customerName: 'Rahul K.', productName: 'Software Architecture Patterns', timeAgo: '2 hours ago', location: 'Gurgaon, India' },
-    { customerName: 'Anjali P.', productName: 'Software System Design', timeAgo: '2 hours ago', location: 'Kochi, India' },
-    { customerName: 'Deepak S.', productName: 'Foundations of Software Design Volume 2', timeAgo: '2 hours ago', location: 'Patna, India' },
-    { customerName: 'Tanvi B.', productName: 'Software Architecture Patterns', timeAgo: '3 hours ago', location: 'Raipur, India' },
-    { customerName: 'Manish G.', productName: 'Software System Design', timeAgo: '3 hours ago', location: 'Ludhiana, India' },
-    { customerName: 'Shreya V.', productName: 'Foundations of Software Design Volume 2', timeAgo: '3 hours ago', location: 'Agra, India' },
-    { customerName: 'Varun T.', productName: 'Software Architecture Patterns', timeAgo: '4 hours ago', location: 'Nashik, India' },
-    { customerName: 'Nisha K.', productName: 'Software System Design', timeAgo: '4 hours ago', location: 'Faridabad, India' },
-    { customerName: 'Akash M.', productName: 'Foundations of Software Design Volume 2', timeAgo: '4 hours ago', location: 'Meerut, India' },
-    { customerName: 'Riya D.', productName: 'Software Architecture Patterns', timeAgo: '5 hours ago', location: 'Rajkot, India' },
-    { customerName: 'Suresh P.', productName: 'Software System Design', timeAgo: '5 hours ago', location: 'Varanasi, India' },
-    { customerName: 'Neha L.', productName: 'Foundations of Software Design Volume 2', timeAgo: '5 hours ago', location: 'Jodhpur, India' },
-    { customerName: 'Gaurav R.', productName: 'Software Architecture Patterns', timeAgo: '6 hours ago', location: 'Amritsar, India' },
-    { customerName: 'Sakshi J.', productName: 'Software System Design', timeAgo: '6 hours ago', location: 'Gwalior, India' },
-    { customerName: 'Abhishek W.', productName: 'Foundations of Software Design Volume 2', timeAgo: '6 hours ago', location: 'Vijayawada, India' },
-    { customerName: 'Tanya N.', productName: 'Software Architecture Patterns', timeAgo: '7 hours ago', location: 'Mysore, India' },
-    { customerName: 'Harish A.', productName: 'Software System Design', timeAgo: '7 hours ago', location: 'Ranchi, India' },
-    { customerName: 'Simran C.', productName: 'Foundations of Software Design Volume 2', timeAgo: '7 hours ago', location: 'Aurangabad, India' },
-    { customerName: 'Yash B.', productName: 'Software Architecture Patterns', timeAgo: '8 hours ago', location: 'Dhanbad, India' },
-    { customerName: 'Preeti H.', productName: 'Software System Design', timeAgo: '8 hours ago', location: 'Jabalpur, India' },
-    { customerName: 'Mohit F.', productName: 'Foundations of Software Design Volume 2', timeAgo: '8 hours ago', location: 'Kota, India' },
-    { customerName: 'Swati E.', productName: 'Software Architecture Patterns', timeAgo: '9 hours ago', location: 'Udaipur, India' }
-  ];
+  // Fetch real purchases from database
+  useEffect(() => {
+    const fetchRecentPurchases = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/orders/recent-purchases`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.length > 0) {
+            setRecentPurchases(data);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching recent purchases:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecentPurchases();
+    // Refresh purchases every 5 minutes to get latest orders
+    const refreshInterval = setInterval(fetchRecentPurchases, 300000);
+    
+    return () => clearInterval(refreshInterval);
+  }, []);
 
   useEffect(() => {
     let timeoutId;
