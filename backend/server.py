@@ -369,6 +369,71 @@ async def verify_payment(payment_data: PaymentVerification):
 
 # ==================== ORDERS ENDPOINTS ====================
 
+@api_router.get("/orders/recent-purchases")
+async def get_recent_purchases():
+    """Get recent 40 purchases for notification popup (public endpoint)"""
+    try:
+        # Get last 40 completed orders
+        orders = await db.orders.find(
+            {"status": "completed", "payment_status": "paid"}
+        ).sort("created_at", -1).limit(40).to_list(40)
+        
+        # Format for popup display
+        purchases = []
+        for order in orders:
+            # Get first item from order
+            if order.get('items') and len(order['items']) > 0:
+                first_item = order['items'][0]
+                
+                # Calculate time ago
+                created_at = order.get('created_at')
+                if created_at:
+                    from datetime import datetime, timezone
+                    if isinstance(created_at, str):
+                        created_at = datetime.fromisoformat(created_at)
+                    
+                    now = datetime.now(timezone.utc)
+                    if created_at.tzinfo is None:
+                        created_at = created_at.replace(tzinfo=timezone.utc)
+                    
+                    diff = now - created_at
+                    
+                    # Format time ago
+                    if diff.total_seconds() < 3600:  # Less than 1 hour
+                        minutes = int(diff.total_seconds() / 60)
+                        time_ago = f"{minutes} minutes ago" if minutes > 1 else "1 minute ago"
+                    elif diff.total_seconds() < 86400:  # Less than 1 day
+                        hours = int(diff.total_seconds() / 3600)
+                        time_ago = f"{hours} hours ago" if hours > 1 else "1 hour ago"
+                    else:
+                        days = int(diff.total_seconds() / 86400)
+                        time_ago = f"{days} days ago" if days > 1 else "1 day ago"
+                else:
+                    time_ago = "recently"
+                
+                purchases.append({
+                    "customerName": order.get('customer_name', 'Anonymous'),
+                    "productName": first_item.get('product_title', 'Product'),
+                    "timeAgo": time_ago,
+                    "location": order.get('city', 'India')
+                })
+        
+        # If less than 40 orders, pad with mock data
+        if len(purchases) < 40:
+            mock_purchases = [
+                { "customerName": "Rajesh K.", "productName": "Software System Design", "timeAgo": "2 hours ago", "location": "Mumbai, India" },
+                { "customerName": "Priya S.", "productName": "Software Architecture Patterns", "timeAgo": "3 hours ago", "location": "Bangalore, India" },
+                { "customerName": "Amit P.", "productName": "Foundations of Software Design Volume 2", "timeAgo": "4 hours ago", "location": "Delhi, India" },
+            ]
+            purchases.extend(mock_purchases[:40 - len(purchases)])
+        
+        return purchases
+        
+    except Exception as e:
+        logger.error(f"Error fetching recent purchases: {str(e)}")
+        # Return empty array instead of failing
+        return []
+
 @api_router.post("/orders", response_model=Order)
 async def create_order(order_create: OrderCreate):
     """Create order from cart"""
