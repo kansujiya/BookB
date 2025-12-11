@@ -68,7 +68,10 @@ const Products = () => {
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            className="grid gap-8 justify-items-center"
+            style={{ gridTemplateColumns: `repeat(${Math.min(Math.max(products.length, 1), 3)}, minmax(0, 1fr))` }}
+          >
             {Array.isArray(products) && products.map((product) => (
               <ProductCard
                 key={product.id}

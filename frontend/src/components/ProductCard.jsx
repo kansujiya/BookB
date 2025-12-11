@@ -21,7 +21,7 @@ const ProductCard = memo(({ product, onAddToCart }) => {
       className="group hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
       onClick={handleCardClick}
     >
-      <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+      <div className="aspect-[3/3] overflow-hidden bg-gray-100">
         <img
           src={product.image}
           alt={product.title}
