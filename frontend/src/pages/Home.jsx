@@ -136,12 +136,12 @@ const Home = () => {
       {/* More Info Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700 mb-6">
+          {/* <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700 mb-6">
             More about our business eBooks
           </h2>
           <p className="text-center text-gray-600 text-lg mb-12">
             Learn more about why our business eBooks are the right choice for you!
-          </p>
+          </p> */}
           
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700 mb-6">
