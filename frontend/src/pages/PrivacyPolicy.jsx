@@ -18,52 +18,75 @@ const PrivacyPolicy = () => {
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6">
-                BookBlaze respects your privacy. This policy describes how your personal information is collected, used, and shared when you visit or make a purchase from our site,{' '}
-                <a href="https://bookblaze.org" className="text-blue-700 hover:text-blue-800 underline">
-                  bookblaze.org
-                </a>
-                .
-              </p>
-
-              <p className="text-gray-700 leading-relaxed mb-8">
-                This policy applies only to our online activities and the information you share or that we collect on our website. It does not apply to information collected offline or through other channels. By using our website, you consent to this Privacy Policy and agree to its terms.
+                At BookBlaze.org, we are committed to protecting your privacy. This policy outlines how we collect, use, and safeguard your personal information when you visit our website or purchase our digital resources. By using our website, you consent to the practices described in this policy.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
-                Information We Collect
+                1. Information We Collect
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                We make it clear what personal information we ask you to provide and why. When you contact us directly, we may collect information like your name, email, phone number, and the content of your message. When you register for an account, we may ask for your name, company name, address, email, and telephone number.
+                We collect information in two ways:
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                When you visit the site, we automatically collect certain information, which we call "Device Information". This includes your web browser, time zone, cookies, and information about the pages and products you view and how you interact with the site. When you make a purchase, we collect "Order Information," which includes your name, billing and shipping addresses, email, and phone number. "Personal Information" refers to both Device and Order Information.
-              </p>
+              <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+                <li>
+                  <strong>Information You Provide:</strong> When you register, purchase a product, or contact us, we collect personal details such as your name, email address, phone number, and billing address ("Order Information").
+                </li>
+                <li>
+                  <strong>Automated Collection:</strong> When you visit our site, we automatically collect data about your device, including your web browser, IP address, time zone, and cookies installed on your device. We also track how you interact with the site, such as the pages you view and the search terms you use ("Device Information").
+                </li>
+              </ul>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
-                How We Use Your Information
+                2. How We Use Your Information
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                We use your Order Information to fulfill orders, process payments, and provide invoices and order confirmations. We also use it to communicate with you, screen for potential fraud, and, based on your preferences, provide you with information or advertising about our products.
+                We use the collected data for the following purposes:
               </p>
+              <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+                <li>
+                  <strong>Order Fulfillment:</strong> To process payments, deliver digital downloads, and send invoices or order confirmations.
+                </li>
+                <li>
+                  <strong>Communication:</strong> To provide customer support and send you important updates or promotional offers (based on your preferences).
+                </li>
+                <li>
+                  <strong>Site Optimization:</strong> We use Device Information (specifically IP addresses) to screen for potential fraud and to generate analytics that help us improve our website's performance and user experience.
+                </li>
+              </ul>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
+                3. Cookies & Log Files
+              </h2>
               <p className="text-gray-700 leading-relaxed mb-6">
-                We use Device Information to screen for potential risk and fraud (especially your IP address) and to improve and optimize our site. We also use the information we collect to operate and maintain our website, understand how you use it, develop new products, and communicate with you for customer service or marketing purposes.
+                Like most websites, we use log files and cookies to analyze trends and administer the site. These technologies track non-personally identifiable information, such as browser type and exit pages. You can disable cookies through your individual browser settings, though this may affect your ability to use certain features of the site.
               </p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
-                Log Files, Cookies, and Third-Party Policies
+                4. Third-Party Services
               </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                We use log files and cookies to collect non-personally identifiable information like your IP address, browser type, and pages visited. This is used for analyzing trends and optimizing the user experience.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Our site may use third-party ad servers or networks that use technologies like cookies to measure advertising effectiveness and personalize content. We have no access to or control over these third-party cookies. We advise you to consult the respective privacy policies of these third parties for more detailed information. You can disable cookies through your browser settings.
-              </p>
               <p className="text-gray-700 leading-relaxed mb-6">
-                We do not alter our data collection practices based on a "Do Not Track" signal from your browser. We will retain your Order Information unless you ask us to delete it. We may update this policy periodically to reflect changes in our practices or for other operational or legal reasons.
+                We may employ third-party companies (such as payment processors or analytics providers) to facilitate our services. These third parties have access to your personal information only to perform specific tasks on our behalf and are obligated not to disclose or use it for any other purpose.
               </p>
 
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
+                5. Data Retention & Your Rights
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                We maintain your Order Information for our records unless you explicitly ask us to delete this information. We do not alter our data collection practices when we see a Do Not Track signal from your browser.
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
+                6. Changes to This Policy
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                We may update this privacy policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
+                Contact Us
+              </h2>
               <p className="text-gray-700 leading-relaxed">
-                If you have questions about our privacy practices or wish to make a complaint, please contact us at{' '}
+                For more information about our privacy practices, or if you have questions, please contact us at{' '}
                 <a href="mailto:sell@bookblaze.org" className="text-blue-700 hover:text-blue-800 underline">
                   sell@bookblaze.org
                 </a>

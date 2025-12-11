@@ -18,16 +18,19 @@ const PricingPolicy = () => {
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6">
-                Our products are priced based on the depth of content, specialization, and included resources. We offer a variety of pricing tiers to fit different needs and budgets. Prices are clearly displayed on individual product pages and may be subject to promotional discounts or bundled offers.
+                Pricing for our product suite is determined by content comprehensiveness, specialization, and
+                accompanying resources. We offer a tiered pricing structure designed to accommodate diverse financial
+                and operational requirements. Current rates are explicitly listed on respective product pages and may
+                reflect promotional incentives or package deals.
               </p>
-              
+
               <p className="text-gray-700 leading-relaxed mb-6">
-                We strive to maintain competitive pricing for high-quality digital resources. All transactions are processed securely, and prices are exclusive of applicable taxes, which will be shown at checkout.
-              </p>
-              
+                We are committed to offering competitive rates for premium digital assets. All financial transactions are
+                encrypted and secure. Please note that advertised rates are exclusive of applicable taxes, which are
+                calculated upon checkout.              </p>
+
               <p className="text-gray-700 leading-relaxed">
-                We reserve the right to modify our pricing at any time without prior notice.
-              </p>
+                We retain the right to adjust pricing structures at our sole discretion and without prior notification.              </p>
             </div>
           </div>
         </div>
